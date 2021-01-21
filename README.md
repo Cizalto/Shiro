@@ -4,7 +4,7 @@ Shiro est une application web de chat par protocole IRC.
 
 ## Features
 
-- Connexion en temporaire en tant qu'invité ou authentification
+-- Connexion en temporaire en tant qu'invité ou authentification
 - Gestion de salons de discussions
 - Changer son nom
 
