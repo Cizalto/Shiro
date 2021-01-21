@@ -11,7 +11,7 @@ Shiro est une application web de chat par protocole IRC.
 ## Features à venir
 
 - Gestion de role
-- Affichage des utilisatuers connecté au salon
+- Affichage des utilisateurs connectés au salon
 - Notifications
 - Liens et images affichés dans le chat
 
