@@ -4,7 +4,7 @@ Shiro est une application web de chat par protocole IRC.
 
 ## Features
 
--- Connexion en temporaire en tant qu'invité ou authentification
+- Connexion en temporaire en tant qu'invité ou authentification
 - Gestion de salons de discussions
 - Changer son nom
 
@@ -17,9 +17,9 @@ Shiro est une application web de chat par protocole IRC.
 
 ## Commandes
 
-/create nomDuSalon - Permet de créer un nouveaux salon.
-/join nomDuSalon - Permet de rejoindre un salon.
-/quit nomDuSalon - Permet de quitter un salon.
-/delete nomDuSalon - Supprime le salon mentionné.
+- /create nomDuSalon - Permet de créer un nouveaux salon.
+- /join nomDuSalon - Permet de rejoindre un salon.
+- /quit nomDuSalon - Permet de quitter un salon.
+- /delete nomDuSalon - Supprime le salon mentionné.
 
-/nick nouveauPseudo - Changer son pseudonyme sur le chat
+- /nick nouveauPseudo - Changer son pseudonyme sur le chat
