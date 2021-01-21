@@ -20,7 +20,9 @@ Shiro est une application web de chat par protocole IRC.
 /create nomDuSalon - Permet de créer un nouveaux salon.
 
 /join nomDuSalon - Permet de rejoindre un salon.
-- /quit nomDuSalon - Permet de quitter un salon.
-- /delete nomDuSalon - Supprime le salon mentionné.
 
-- /nick nouveauPseudo - Changer son pseudonyme sur le chat
+/quit nomDuSalon - Permet de quitter un salon.
+
+/delete nomDuSalon - Supprime le salon mentionné.
+
+/nick nouveauPseudo - Changer son pseudonyme sur le chat
