@@ -78,7 +78,7 @@ function Modal(props) {
                         {/* <button className="wonderful btn btn-default disabled">{String.fromCharCode(Checkbox)}</button> */}
                     </div>
                     <div className="validation">
-                        <button className="btn" onClick={event => props.joinWithAuth(accountName,password,"general")}>Connect</button>
+                        <button className="btn" onClick={event => props.joinWithAuth(accountName,password,"général")}>Connect</button>
                     </div>
                 </div>
                 <div className="separator">
@@ -89,7 +89,7 @@ function Modal(props) {
                     <div className="content">
                         <div className="buttons">
                             <div className="wonderful btn btn-default disabled">&#x21bb;</div>
-                                <button className="btn join" onClick={event => props.joinAs(userName, "general")}>
+                                <button className="btn join" onClick={event => props.joinAs(userName, "général")}>
                                     Join the chat as
                                     <p className="username">{userName}</p>
                                 </button>

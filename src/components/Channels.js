@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Body from './Body';
 
 function Channels(props) {
@@ -6,40 +6,61 @@ function Channels(props) {
 
     const [currentChannel, setCurrentChannel] = useState('Général');
     const [activeChannel, setActiveChannel] = useState([false,true]);
-    // const [userList, setUserList] = useState(props.userList);
-    console.log("Props Userlist",props.userList);
-
+    const [channels, setChannels] = useState(props.channels)
+    const [count, setCount] = useState(1)
+    
     var channelList = [
         {
             label: 'Général',
             content: (
                 <div className="channel-content">
-                    <Body soc={socket} active={activeChannel[0]} history={props.history} userList={props.userList}/>
-                </div>
-            )
-        },
-        {
-            label: 'Channel 2',
-            content: (
-                <div className="channel-content">
-                    <Body soc={socket} active={activeChannel[1]} history={props.history} userList={props.userList}/>
+                    <Body soc={socket} active={activeChannel[0]} history={channels[channels.channelList[0]].history} channel={channels.channelList[0]} userList={props.userList}/>
                 </div>
             )
         }
+        // {
+        //     label: 'Channel 2',
+        //     content: (
+        //         <div className="channel-content">
+        //             <Body soc={socket} active={activeChannel[1]} history={channels[channels.channelList[1]].history} channel={channels.channelList[1]} userList={props.userList}/>
+        //         </div>
+        //     )
+        // }
     ];
 
-    function addChannel(label) {
-        var newChannel = {
-            label: label,
-            content: (
-                <div className="channel-content">
-                    <p>{label}</p>
-                </div>
-            )
-        };
+        function addChannel() {
+            for (let i = 1; i <channels.channelList.length; i++ ){
+                console.log("For loop count", i);
+                var newChannel =  {
+                    label: channels.channelList[i],
+                    content: (
+                        <div className="channel-content">
+                            <Body soc={socket} active={activeChannel[1]} history={channels[channels.channelList[i]].history} channel={channels.channelList[i]} userList={props.userList}/>
+                        </div>
+                    )
+                };
+    
+                channelList = [...channelList, newChannel];
+            }
+        }
 
-        channelList = [...channelList, newChannel];
-    }
+        if (channels !== props.channels){
+            setChannels(props.channels)
+        }
+
+        if (props.channels.channelList.length>channelList.length) {
+            addChannel();
+        }
+
+            console.log('====================================');
+            console.log("The actual Channel count:",props.channels.channelList.length);
+            console.log("The displayed channel count:",channelList.length);
+            console.log("The react component Channel list:",channelList);
+            console.log('====================================');
+
+    
+
+
 
     function updateChannel(label) {
         setCurrentChannel(label);
@@ -88,6 +109,10 @@ function Channels(props) {
         }
     }
 
+    console.log('====================================');
+    console.log("Channels history", props.channels);
+    console.log('====================================');
+
     return(
         <div className="d-flex flex-column flex-grow-1">
             <div className="channels">
@@ -101,9 +126,9 @@ function Channels(props) {
                         </button>
                     ))
                 }
-                <button className="btn add channel" onClick={addChannel("Chan oni")}>
+                {/* <button className="btn add channel" onClick={addChannel("Chan oni")}>
                     +
-                </button>
+                </button> */}
             </div>
 
             {

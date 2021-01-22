@@ -76,7 +76,7 @@ function Body(props) {
             console.log("SendMsg:",props.history);
 
 
-            socket.emit("post", msg, 'general', getTimestamp(),)
+            socket.emit("post", msg, props.channel, getTimestamp())
             setMsg("")
             userInput.focus()
         }
