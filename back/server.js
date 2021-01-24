@@ -123,6 +123,14 @@ function send(event, content, room, sender, type, timeStamp) {
                         }
                         console.log('changing', client.id, 'name to', newNick);
                         let lastNick = userList[client.token]
+                        for (const [key, value] of Object.entries(rooms)) {
+                            if (value.userList) {
+                                if (value.userList[client.token]){
+                                    rooms[key].userList[client.token] = newNick
+                                    io.to(key).emit("update-channel-users", rooms[key]);
+                                }
+                            }
+                        }
                         userList[client.token] = newNick;
                         send("update-userList", userList, null, 'server', 'data');
                         client.emit('update', { content: "You changed your name from " + lastNick + " to " + userList[client.token], sender: 'server',room: room, timeStamp: getTimestamp() })
@@ -210,7 +218,7 @@ function send(event, content, room, sender, type, timeStamp) {
                             client.emit('update', { content: 'You can\'t leave the main channel', sender: 'server', timeStamp: getTimestamp() })
                         } else if (client.rooms.has(cmdArr[1])) {
                             client.emit('quit-channel', { content: cmdArr[1], sender: 'server', timeStamp: getTimestamp() })
-                            delete rooms[room].userList[client.token]
+                            delete rooms[cmdArr[1]].userList[client.token]
                             client.emit('update', { content: 'You left ' + cmdArr[1], sender: 'server', timeStamp: getTimestamp() })
                             client.leave(cmdArr[1])
                             io.to(cmdArr[1]).emit("update-channel-users", rooms[cmdArr[1]]);

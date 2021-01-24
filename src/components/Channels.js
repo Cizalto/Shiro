@@ -4,17 +4,17 @@ import Body from './Body';
 function Channels(props) {
     let socket = props.soc;
 
-    const [currentChannel, setCurrentChannel] = useState('Général');
+    const [currentChannel, setCurrentChannel] = useState('général');
     const [activeChannel, setActiveChannel] = useState([false,true]);
     const [channels, setChannels] = useState(props.channels)
     const [count, setCount] = useState(1)
     
     var channelList = [
         {
-            label: 'Général',
+            label: 'général',
             content: (
                 <div className="channel-content">
-                    <Body soc={socket} active={activeChannel[0]} history={channels[channels.channelList[0]].history} channel={channels.channelList[0]} userList={props.userList}/>
+                    <Body soc={socket} active={activeChannel[0]} history={channels[channels.channelList[0]].history} channel={channels.channelList[0]} userList={channels[channels.channelList[0]].userList}/>
                 </div>
             )
         }
@@ -35,7 +35,7 @@ function Channels(props) {
                     label: channels.channelList[i],
                     content: (
                         <div className="channel-content">
-                            <Body soc={socket} active={activeChannel[1]} history={channels[channels.channelList[i]].history} channel={channels.channelList[i]} userList={props.userList}/>
+                            <Body soc={socket} active={activeChannel[1]} history={channels[channels.channelList[i]].history} channel={channels.channelList[i]} userList={channels[channels.channelList[i]].userList}/>
                         </div>
                     )
                 };
@@ -82,12 +82,12 @@ function Channels(props) {
     }
 
     function displayConnectedUsers() {
-        console.log("Displaying", props.userList);
-        if (props.userList != undefined) {
-            console.log("Entries before",Object.entries(props.userList.content))
+        console.log("Displaying", currentChannel);
+        if (props.channels[currentChannel].userList !== undefined) {
+            console.log("Entries before",Object.entries(props.channels[currentChannel].userList))
             var content = [];
             let count = 0;
-            for(const [key,value] of Object.entries(props.userList.content)) {
+            for(const [key,value] of Object.entries(props.channels[currentChannel].userList)) {
                 console.log("Entries",Object.entries(props.userList.content));
                 console.log("Value", value);
                 console.log("Content",content);

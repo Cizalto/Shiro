@@ -27,7 +27,7 @@ function Content(props) {
                return (
                     <div>
                         <div className="d-flex flex-row msg-header">
-                            <div className="msg-user">{props.users.content[msg.sender] || props.users.content[socket.token] || msg.name }</div>
+                            <div className="msg-user">{props.users[msg.sender] || props.users[socket.token] || msg.name }</div>
                             <div className="msg-role">{role}</div>
                         </div>
                         <div className="msg-body">{msg.content}</div>
@@ -38,7 +38,7 @@ function Content(props) {
                 return (
                     <div>
                         <div className="d-flex flex-row msg-header">
-                            <div className="msg-user">{props.users.content[msg.sender] || props.users.content[socket.token] || msg.name}</div>
+                            <div className="msg-user">{props.users[msg.sender] || props.users[socket.token] || msg.name}</div>
                             <div className="msg-role">{role}</div>
                         </div>
                         <div className="msg-body">{msg.content}</div>
