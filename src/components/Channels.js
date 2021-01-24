@@ -118,7 +118,7 @@ function Channels(props) {
             )
         } else {
             return (
-                null;
+                null
             )
         }
     }
