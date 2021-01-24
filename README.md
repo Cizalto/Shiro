@@ -1,3 +1,5 @@
+<img src="/src/images/Shiroctogone.png" width="250">
+
 # Shiro, the quick chat app
 
 Shiro est une application web de chat par protocole IRC. 
