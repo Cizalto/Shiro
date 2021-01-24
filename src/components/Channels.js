@@ -111,19 +111,16 @@ function Channels(props) {
         }
     }
 
-    function showButtonNotification() {
-        let notif = [false,true];
-        return channelList.map((index) => {
-            if (notif[index] === true) {
-                return (
-                    <p className="symbol">{String.fromCharCode("9679")}</p>
-                )
-            } else {
-                return (
-                    null
-                )
-            }
-        })
+    function showButtonNotification(label) {
+        if (label !== currentChannel) {
+            return (
+                <p className="symbol">{String.fromCharCode("9679")}</p>
+            )
+        } else {
+            return (
+                null
+            )
+        }
     }
 
     console.log('====================================');
@@ -140,7 +137,7 @@ function Channels(props) {
                             onClick={() => updateChannel(channel.label)}
                             className={(channel.label === currentChannel) ? 'btn channel active' : 'btn channel'}>
                                 <p>{channel.label}</p>
-                                {showButtonNotification()}
+                                {showButtonNotification(channel.label)}
                         </button>
                     ))
                 }
