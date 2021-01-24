@@ -1,4 +1,4 @@
-<img src="/src/images/Shiroctogone.png" width="250">
+<img src="/src/images/Shiroctogone.png" width="300">
 
 # Shiro, the quick chat app
 
