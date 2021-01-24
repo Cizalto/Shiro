@@ -86,27 +86,44 @@ function Channels(props) {
         if (props.userList != undefined) {
             console.log("Entries before",Object.entries(props.userList.content))
             var content = [];
+            let count = 0;
             for(const [key,value] of Object.entries(props.userList.content)) {
-                console.log("Entries",props.userList.content);
+                console.log("Entries",Object.entries(props.userList.content));
                 console.log("Value", value);
                 console.log("Content",content);
-                content[key] = (
+                content[count] = (
                     <div className="username">
                         {value}
                     </div>
                 )
                 console.log("Content",content);
+                count++;
                 // return content
             }
-            // return content
-            content.forEach(element => {
+            
+            return content.map(element => {
                 console.log("Element",element);
-                // return element;
+                return element;
             });
         } else {
             console.log("No user to display");
             return null;
         }
+    }
+
+    function showButtonNotification() {
+        let notif = [false,true];
+        return channelList.map((index) => {
+            if (notif[index] === true) {
+                return (
+                    <p className="symbol">{String.fromCharCode("9679")}</p>
+                )
+            } else {
+                return (
+                    null
+                )
+            }
+        })
     }
 
     console.log('====================================');
@@ -122,13 +139,11 @@ function Channels(props) {
                             key={i}
                             onClick={() => updateChannel(channel.label)}
                             className={(channel.label === currentChannel) ? 'btn channel active' : 'btn channel'}>
-                                {channel.label}
+                                <p>{channel.label}</p>
+                                {showButtonNotification()}
                         </button>
                     ))
                 }
-                {/* <button className="btn add channel" onClick={addChannel("Chan oni")}>
-                    +
-                </button> */}
             </div>
 
             {
