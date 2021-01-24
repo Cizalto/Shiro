@@ -8,7 +8,7 @@ const io = require('socket.io')({
 var token;
 var userList = {};
 var roomList = [{ name: 'general', history: [] }]
-var rooms ={roomList:['général'],général:{name: 'général',history: []}}
+var rooms ={roomList:['général'],général:{userList:{},name: 'général',history: []}}
 
 io.use(function(socket, next) {
     token = socket.request._query.token
@@ -32,6 +32,7 @@ const session_handler = require('io-session-handler').from(io)
 
 function getHistory(room) {
     console.log("Getting", room, 'history:', rooms[room].history);
+    console.log("Getting", room, 'userList:', rooms[room].userList);
     return rooms[room]
 }
 
@@ -84,9 +85,11 @@ function send(event, content, room, sender, type, timeStamp) {
             client.join(room)
             client.emit("success")
             if (!userList[client.token]){userList[client.token] = name}
+            if (!rooms[room].userList[client.token]){rooms[room].userList[client.token] = name}
             console.log(userList[client.token], "joined the Chat !");
             let roomObj = getHistory(room)
             send("update-userList", userList, null, 'server', 'data');
+            io.to(room).emit("update-channel-users", rooms[room]);
             client.emit("room-history", { content: roomObj, sender: 'server', timeStamp: getTimestamp(), type: "data" });
             client.emit("update", { content: `You're connected to ${room}`, sender: 'server',room: room, timeStamp: getTimestamp() });
             send("update", name + " joined the server.", room, 'server', 'join');
@@ -148,10 +151,13 @@ function send(event, content, room, sender, type, timeStamp) {
                             rooms[cmdArr[1]] = {}
                             rooms[cmdArr[1]].history = []
                             rooms[cmdArr[1]].name = cmdArr[1]
+                            rooms[cmdArr[1]].userList = {}
+                            rooms[cmdArr[1]].userList[client.token] = userList[client.token]
                             client.join(cmdArr[1])
                             client.emit('update', { content: 'The channel ' + cmdArr[1] + ' has been created succesfully', sender: 'server',room: room, timeStamp: getTimestamp() })
                             // client.emit('update-channel', {room:cmdArr[1],history:[{content: "Welcome to "+cmdArr[1]+".",sender: 'server', timeStamp: getTimestamp()}]})
                             client.emit("room-history", { content: getHistory(cmdArr[1]), sender: 'server',room: room, timeStamp: getTimestamp(), type: "data" });
+                            send("update", userList[client.token] + " joined the channel.", cmdArr[1], 'server', 'join');
                         }else{
                             client.emit('update', { content: 'The channel you tried to create already exist, type "/join '+ cmdArr[1] +'" to join this channel.', sender: 'server',room: room, timeStamp: getTimestamp() }) 
                         }
@@ -160,7 +166,13 @@ function send(event, content, room, sender, type, timeStamp) {
                     case 'delete':
                         let index = rooms.roomList.findIndex(i => i === cmdArr[1])
                         if (index > 0) {
+                            io.to(cmdArr[1]).emit('quit-channel', { content: cmdArr[1], sender: 'server', timeStamp: getTimestamp() })
                             rooms.roomList.splice(index, 1)
+                            delete rooms[cmdArr[1]]
+                            if (room === cmdArr[1]) {
+                                room = "général"
+                            }
+                            console.log(room);
                             client.emit('update', { content: 'The channel ' + cmdArr[1] + ' has been deleted succesfully', sender: 'server',room: room, timeStamp: getTimestamp() })
                         } else if (index < 0) {
                             client.emit('update', { content: 'The channel you tried to remove doesn\'t exist', sender: 'server',room: room, timeStamp: getTimestamp() })
@@ -182,7 +194,11 @@ function send(event, content, room, sender, type, timeStamp) {
                             }else{
                                 client.join(cmdArr[1])
                                 client.emit('update', { content: 'You joined ' + cmdArr[1], sender: 'server',room: room, timeStamp: getTimestamp() })
+                                rooms[room].userList[client.token] = userList[client.token]
+                                rooms[cmdArr[1]].userList[client.token] = userList[client.token]
                                 client.emit("room-history", { content: getHistory(cmdArr[1]), sender: 'server',room: room, timeStamp: getTimestamp(), type: "data" });
+                                io.to(cmdArr[1]).emit("update-channel-users", rooms[cmdArr[1]]);
+                                send("update", userList[client.token] + " joined the channel.", cmdArr[1], 'server', 'join');
                             }
                         } else {
                             client.emit('update', { content: 'The channel you tried to join doesn\'t exist', sender: 'server',room: room, timeStamp: getTimestamp() })
@@ -194,8 +210,11 @@ function send(event, content, room, sender, type, timeStamp) {
                             client.emit('update', { content: 'You can\'t leave the main channel', sender: 'server', timeStamp: getTimestamp() })
                         } else if (client.rooms.has(cmdArr[1])) {
                             client.emit('quit-channel', { content: cmdArr[1], sender: 'server', timeStamp: getTimestamp() })
+                            delete rooms[room].userList[client.token]
                             client.emit('update', { content: 'You left ' + cmdArr[1], sender: 'server', timeStamp: getTimestamp() })
                             client.leave(cmdArr[1])
+                            io.to(cmdArr[1]).emit("update-channel-users", rooms[cmdArr[1]]);
+                            send("update", userList[client.token] + " left the channel.", cmdArr[1], 'server', 'leave');
                         } else {
                             client.emit('update', { content: 'You can\'t leave a channel you never joined', sender: 'server', timeStamp: getTimestamp() })
                         }
@@ -217,6 +236,7 @@ function send(event, content, room, sender, type, timeStamp) {
                         break;
                     default:
                         console.log(`default`);
+                        client.emit('update', { content: 'This ', sender: 'server',room: room, timeStamp: getTimestamp() })
                         break;
 
                 }
@@ -232,6 +252,19 @@ function send(event, content, room, sender, type, timeStamp) {
                         console.log(client.id,"left the server.")
                         send("update", userList[client.token] + " has left the server", 'général', 'server', 'leave')
                         
+                        
+
+                        for (const [key, value] of Object.entries(rooms)) {
+                            if (value.userList) {
+                                if (value.userList[client.token]){
+                                    delete rooms[key].userList[client.token]
+                                    io.to(key).emit("update-channel-users", rooms[key]);
+                                    if(key !== "général"){
+                                        send("update", userList[client.token] + " left the channel.", key, 'server', 'leave');
+                                    }  
+                                }
+                            }
+                        }
                         delete userList[client.token]
                         send("update-userList", userList, null, 'server', 'data');
         })

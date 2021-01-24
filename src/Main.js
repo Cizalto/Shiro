@@ -54,6 +54,7 @@ function Main (props){
             channels_cpy[dataObj.content.name] = {}
             channels_cpy[dataObj.content.name].room = dataObj.content.name 
             channels_cpy[dataObj.content.name].history = [{content: "Welcome to "+dataObj.content.name,sender: 'server', timeStamp: getTimestamp()},...dataObj.content.history]
+            channels_cpy[dataObj.content.name].userList = {...dataObj.content.userList}
             setChannels(channels_cpy)
             setHistory(historyCpy => ([...historyCpy, ...dataObj.content.history]))
             console.log('====================================');
@@ -61,14 +62,26 @@ function Main (props){
             console.log('====================================');
         })
 
-        socket.on("update-channel", (channel) => {
+        // socket.on("update-channel", (channel) => {
+        //     let channels_cpy = channels
+        //     channels_cpy.channelList = [...channels_cpy.channelList, channel.room]
+        //     channels_cpy[channel.room] = {}
+        //     channels_cpy[channel.room].room = channel.room 
+        //     channels_cpy[channel.room].history = channel.history
+        //     channels_cpy[channel.room].userList = channel.userList
+        //     setChannels(channels_cpy)
+        //     console.log("Here's the",channel.room+" history:",channel.history);
+        //     console.log('====================================');
+        //     console.log("Channels:", channels);
+        //     console.log('====================================');
+        // })
+
+        socket.on("update-channel-users", (channel) => {
+          console.log("This is the channel wich got a userList update:",channel);
             let channels_cpy = channels
-            channels_cpy.channelList = [...channels_cpy.channelList, channel.room]
-            channels_cpy[channel.room] = {}
-            channels_cpy[channel.room].room = channel.room 
-            channels_cpy[channel.room].history = channel.history
+            channels_cpy[channel.name].userList = channel.userList
             setChannels(channels_cpy)
-            console.log("Here's the",channel.room+" history:",channel.history);
+            console.log("Here's the",channel.name+" userList:",channel.userList);
             console.log('====================================');
             console.log("Channels:", channels);
             console.log('====================================');
