@@ -5,9 +5,9 @@ const io = require('socket.io')({
         methods: ["GET", "POST"]
     }
 });
+var count = 0;
 var token;
 var userList = {};
-var roomList = [{ name: 'general', history: [] }]
 var rooms ={roomList:['général'],général:{userList:{},name: 'général',history: []}}
 
 io.use(function(socket, next) {
@@ -26,7 +26,6 @@ io.use(function(socket, next) {
     next();
   });
 
-const session_handler = require('io-session-handler').from(io)
 
 
 
@@ -82,10 +81,13 @@ function send(event, content, room, sender, type, timeStamp) {
         client.token = token
         console.log('A user connected with id: ' + client.id);
         client.on('first-join', (name, room) => {
+            client.number = count;
+            count++
+            console.log(client.number);
             client.join(room)
             client.emit("success")
-            if (!userList[client.token]){userList[client.token] = name}
-            if (!rooms[room].userList[client.token]){rooms[room].userList[client.token] = name}
+            if (!userList[client.token]){userList[client.token] =  name+"#"+('000' + client.number).slice(-4)}
+            if (!rooms[room].userList[client.token]){rooms[room].userList[client.token] = name+"#"+('000' + client.number).slice(-4)}
             console.log(userList[client.token], "joined the Chat !");
             let roomObj = getHistory(room)
             send("update-userList", userList, null, 'server', 'data');
@@ -126,12 +128,12 @@ function send(event, content, room, sender, type, timeStamp) {
                         for (const [key, value] of Object.entries(rooms)) {
                             if (value.userList) {
                                 if (value.userList[client.token]){
-                                    rooms[key].userList[client.token] = newNick
+                                    rooms[key].userList[client.token] = newNick+"#"+('000' + client.number).slice(-4)
                                     io.to(key).emit("update-channel-users", rooms[key]);
                                 }
                             }
                         }
-                        userList[client.token] = newNick;
+                        userList[client.token] = newNick+"#"+('000' + client.number).slice(-4);
                         send("update-userList", userList, null, 'server', 'data');
                         client.emit('update', { content: "You changed your name from " + lastNick + " to " + userList[client.token], sender: 'server',room: room, timeStamp: getTimestamp() })
                         break;
@@ -233,18 +235,21 @@ function send(event, content, room, sender, type, timeStamp) {
                         io.sockets.adapter.rooms.get(room).forEach(user => userListInClientRoom.push(userList[user]));
                         client.emit('update', { content: 'List of users connected to ' + room + ': ' + userListInClientRoom.join(', '), sender: 'server',room: room, timeStamp: getTimestamp() })
                         break;
+                    case 'msg':
+                            
+                        break;
                     case 'token':
                         console.log(client.token);
                         break;
-                        case 'admin':
+                    case 'admin':
                             io.emit('rick')
                         break;
-                        case 'test':
+                    case 'test':
                             
                         break;
                     default:
                         console.log(`default`);
-                        client.emit('update', { content: 'This ', sender: 'server',room: room, timeStamp: getTimestamp() })
+                        client.emit('update', { content: 'This command: /'+cmdArr.join(" ")+' doesn\'t exist', sender: 'server',room: room, timeStamp: getTimestamp() })
                         break;
 
                 }
