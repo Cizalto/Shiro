@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import Body from './Body';
+import Menu from './Menu';
 
 function Channels(props) {
     let socket = props.soc;
@@ -7,8 +8,7 @@ function Channels(props) {
     const [currentChannel, setCurrentChannel] = useState('général');
     const [activeChannel, setActiveChannel] = useState([false,true]);
     const [channels, setChannels] = useState(props.channels)
-    const [count, setCount] = useState(1)
-    
+
     var channelList = [
         {
             label: 'général',
@@ -18,49 +18,37 @@ function Channels(props) {
                 </div>
             )
         }
-        // {
-        //     label: 'Channel 2',
-        //     content: (
-        //         <div className="channel-content">
-        //             <Body soc={socket} active={activeChannel[1]} history={channels[channels.channelList[1]].history} channel={channels.channelList[1]} userList={props.userList}/>
-        //         </div>
-        //     )
-        // }
     ];
 
-        function addChannel() {
-            for (let i = 1; i <channels.channelList.length; i++ ){
-                console.log("For loop count", i);
-                var newChannel =  {
-                    label: channels.channelList[i],
-                    content: (
-                        <div className="channel-content">
-                            <Body soc={socket} active={activeChannel[1]} history={channels[channels.channelList[i]].history} channel={channels.channelList[i]} userList={channels[channels.channelList[i]].userList}/>
-                        </div>
-                    )
-                };
-    
-                channelList = [...channelList, newChannel];
-            }
+    function addChannel() {
+        for (let i = 1; i <channels.channelList.length; i++ ){
+            console.log("For loop count", i);
+            var newChannel =  {
+                label: channels.channelList[i],
+                content: (
+                    <div className="channel-content">
+                        <Body soc={socket} active={activeChannel[1]} history={channels[channels.channelList[i]].history} channel={channels.channelList[i]} userList={channels[channels.channelList[i]].userList}/>
+                    </div>
+                )
+            };
+            channelList = [...channelList, newChannel];
         }
+    }
 
-        if (channels !== props.channels){
-            setChannels(props.channels)
-        }
+    if (channels !== props.channels){
+        setChannels(props.channels)
+    }
 
-        if (props.channels.channelList.length>channelList.length) {
-            addChannel();
-        }
+    if (props.channels.channelList.length>channelList.length) {
+        addChannel();
+    }
 
-            console.log('====================================');
-            console.log("The actual Channel count:",props.channels.channelList.length);
-            console.log("The displayed channel count:",channelList.length);
-            console.log("The react component Channel list:",channelList);
-            console.log('====================================');
-
-    
-
-
+    //channel log
+    console.log('====================================');
+    console.log("The actual Channel count:",props.channels.channelList.length);
+    console.log("The displayed channel count:",channelList.length);
+    console.log("The react component Channel list:",channelList);
+    console.log('====================================');
 
     function updateChannel(label) {
         setCurrentChannel(label);
@@ -77,40 +65,6 @@ function Channels(props) {
         })
     }
 
-    function removeChannel() {
-
-    }
-
-    function displayConnectedUsers() {
-        console.log("Displaying", currentChannel);
-        if (props.channels[currentChannel].userList !== undefined) {
-            console.log("Entries before",Object.entries(props.channels[currentChannel].userList))
-            var content = [];
-            let count = 0;
-            for(const [key,value] of Object.entries(props.channels[currentChannel].userList)) {
-                console.log("Entries",Object.entries(props.userList.content));
-                console.log("Value", value);
-                console.log("Content",content);
-                content[count] = (
-                    <div className="username">
-                        {value}
-                    </div>
-                )
-                console.log("Content",content);
-                count++;
-                // return content
-            }
-            
-            return content.map(element => {
-                console.log("Element",element);
-                return element;
-            });
-        } else {
-            console.log("No user to display");
-            return null;
-        }
-    }
-
     function showButtonNotification(label) {
         if (label !== currentChannel) {
             return (
@@ -123,12 +77,15 @@ function Channels(props) {
         }
     }
 
+    //history log
     console.log('====================================');
     console.log("Channels history", props.channels);
     console.log('====================================');
 
+    //return jsx
     return(
         <div className="d-flex flex-column flex-grow-1">
+            {/* Create channel tabs */}
             <div className="channels">
                 {
                     channelList.map((channel, i) => (
@@ -143,6 +100,7 @@ function Channels(props) {
                 }
             </div>
 
+            {/* Display channel content */}
             {
                 channelList.map((channel, i) => {
 
@@ -154,14 +112,7 @@ function Channels(props) {
                                 <div className="d-flex flex-column flex-grow-1" key={i}>
                                     {channel.content}
                                 </div>
-                                <div className="menu">
-                                    <div className="title">
-                                        Connected Users
-                                    </div>
-                                    <div className="userlist">
-                                        {displayConnectedUsers()}
-                                    </div>
-                                </div>
+                                <Menu title="Connected Users" userlist={props.channels[currentChannel].userList}/>
                             </div>
                         )
                     } else {

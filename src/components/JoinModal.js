@@ -103,7 +103,6 @@ function Modal(props) {
                     </div>
                 </div>
             </div>
-            {/* <button className="btn join" onClick={event => setSignIn(true)}>signin</button> */}
         </div>
     );
 }
