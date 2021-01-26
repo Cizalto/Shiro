@@ -12,7 +12,7 @@ let host = "localhost:8000";
 function join(username, room){
         console.info("-- Joining --");
         token = 'anon'
-        socket = io(host, { query: { token: token, uuid: uuid, username:username }, autoConnect: false  });
+        socket = io(host, { query: { token: token, uuid: uuid, username:username }, autoConnect: false, secure: true  });
         socket.once("success", () => {console.log("-- Connection successful --")})
         socket.open()
         socket.emit('first-join',username, room)
