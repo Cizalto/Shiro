@@ -27,7 +27,9 @@ io.use(function(socket, next) {
   });
 
 
-
+  function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+  }  
 
 function getHistory(room) {
     console.log("Getting", room, 'history:', rooms[room].history);
@@ -236,7 +238,31 @@ function send(event, content, room, sender, type, timeStamp) {
                         client.emit('update', { content: 'List of users connected to ' + room + ': ' + userListInClientRoom.join(', '), sender: 'server',room: room, timeStamp: getTimestamp() })
                         break;
                     case 'msg':
-                            
+                    if (cmdArr.length > 2){
+                        let usernameAndMsg = cmdArr
+                        usernameAndMsg.shift()
+                        let isUsername = true
+                        let username = []
+                        let msg = []
+                        usernameAndMsg.forEach(function(cmdPart){
+                            if (isUsername) {
+                                username = [...username, cmdPart]
+                                if (cmdPart.includes("#")){
+                                    isUsername = false
+                                }
+                            }else{
+                                msg = [...msg, cmdPart]
+                            }
+                        })
+                        let userId = getKeyByValue(rooms[room].userList,username.join(" "))
+                        if (userId){
+                            io.to(userId).to(client.id).emit("chat", {content: msg.join(" "), room: room, sender:client.id, type:'wisper',timeStamp: getTimestamp()})
+                        } else {
+                            client.emit('update', { content: 'You can\'t send a private message to '+username.join(" ")+' because this user is not connected to the channel you sent the message in.', sender: 'server', timeStamp: getTimestamp() })
+                        }
+                    }else {
+                        client.emit('update', { content: 'the command is missing an argument', sender: 'server', timeStamp: getTimestamp() })
+                    }
                         break;
                     case 'token':
                         console.log(client.token);

@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 let token;
 let socket;
 const uuid = uuidv4();
-let host = "192.168.1.22:8000";
+let host = "192.168.1.6:8000";
 
         
 //local host
