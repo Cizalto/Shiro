@@ -9,7 +9,8 @@ function Content(props) {
         let blockArr= [[]];
         let indexBlock = 0;
         props.messages.map(function(msg,index) {
-            if ((index > 0 && msg.sender !== props.messages[index-1].sender)){
+            if (((index > 0 && msg.sender !== props.messages[index-1].sender)
+            || (index > 0 && msg.type !== props.messages[index-1].type && msg.sender !== "server"))) {
                 blockArr = [...blockArr, [msg]];
                 indexBlock++
             } else{
@@ -21,6 +22,7 @@ function Content(props) {
     }
 
     function msgUserBuilder(msg,index,length) {
+        //selecet TagName
         let tagName;
         if (props.users[msg.sender]) {
             tagName = props.users[msg.sender];
@@ -31,9 +33,18 @@ function Content(props) {
             tagName = msg.userName;
         }
 
+        //Slice TagName
         let user = slicer(tagName);
         let name = user[0];
         let tag = user[1];
+
+        //check whisper
+        let prefix = "Posted at ";
+        let suffix;
+        if (msg.type === "whisper") {
+            prefix = "Whispered at ";
+            suffix = "to nobody" //msg.to;
+        }
 
         if (index === 0) {
             if (length === 1) {
@@ -44,7 +55,7 @@ function Content(props) {
                             <div className="msg-tag">{tag}</div>
                         </div>
                         <div className="msg-body">{msg.content}</div>
-                        <div className="msg-footer">Posted at {msg.timeStamp}</div>
+                        <div className="msg-footer">{prefix} {msg.timeStamp} {suffix}</div>
                     </div>
                 )
             } else {
@@ -62,7 +73,7 @@ function Content(props) {
             return (
                 <div>
                     <div className="msg-body">{msg.content}</div>
-                    <div className="msg-footer">Posted at {msg.timeStamp}</div>
+                    <div className="msg-footer">{prefix} {msg.timeStamp} {suffix}</div>
                 </div>
             )
         } else {
@@ -140,6 +151,10 @@ function Content(props) {
                 msgOrigin = "message self";
             } else {
                 msgOrigin = "message other";
+            }
+
+            if (block[0].type === "whisper") {
+                msgOrigin = "whisper";
             }
         } else {
             msgOrigin = "info";

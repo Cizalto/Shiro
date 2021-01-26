@@ -421,8 +421,7 @@ html{
   /* margin: 0 auto;; */
   word-wrap: none;
   color: rgb(204, 198, 189);
-  /* background-color: #cf606E; */
-  /* border-radius: 1vmin; */
+  
 }
 
 .info .msg {
@@ -463,15 +462,30 @@ html{
   border: none;
   margin-top: .5vh;
   margin-bottom: .5vh;
-  background-color: #33363d00;
   margin-left: 2vw;
   margin-right: 2vw;
   /* overflow-wrap: normal; */
 }
 
+.whisper {
+  border: 2px solid;
+  border-color: #cf606E;
+  background-color: #2b2d33;
+  border-radius: 1vmin;
+  padding-top: .5vh;
+  padding-bottom: .5vh;
+}
+
+.whisper .msg-header {
+  margin-top: 0;
+}
+
+.whisper .msg-footer {
+  color: #cf606E;
+}
+
 .msg-header {
   border: none;
-  background-color: #33363d;
   /* margin-bottom: 2vh; */
   color: #cdc7be;
   margin-top: 2vh;
@@ -496,7 +510,6 @@ html{
 
 .msg-body {
   border: none;
-  background-color: #33363d;
   padding: 0;
   line-break: strict;
   word-break: break-all;
@@ -506,12 +519,11 @@ html{
 
 .msg-footer {
   border: none;
-  background-color: #33363d;
   padding: 0;
   padding-top: 0;
   font-size: small;
   font-style: italic;
-  opacity: .5;
+  opacity: .7;
   /* padding-left: 2vw;
   padding-right: 2vw; */
 }
