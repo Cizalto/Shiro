@@ -26,7 +26,6 @@ function Content(props) {
         let tagName;
         if (props.users[msg.sender]) {
             tagName = props.users[msg.sender];
-            console.log("user connected", props.users[msg.sender])
         } else if (props.users[socket.token]) {
             tagName = props.users[socket.token];
         } else {
@@ -39,11 +38,18 @@ function Content(props) {
         let tag = user[1];
 
         //check whisper
-        let prefix = "Posted at ";
-        let suffix;
+        let footer = "";
         if (msg.type === "whisper") {
-            prefix = "Whispered at ";
-            suffix = "to nobody" //msg.to;
+            console.log("to ",msg.to);
+            console.log("tagName ",tagName);
+
+            if (msg.to === props.users[socket.id]) {
+                footer = tagName + " whispered to you at " + msg.timeStamp;
+            } else {
+                footer = "Whispered at " + msg.timeStamp + " to " + msg.to;
+            }
+        } else {
+            footer = "Posted at " + msg.timeStamp;
         }
 
         if (index === 0) {
@@ -51,18 +57,20 @@ function Content(props) {
                return (
                     <div>
                         <div className="d-flex flex-row msg-header">
-                            <div className="msg-user">{name}</div>
+                            <div className="msg-user" onClick={event => props.auto("/msg " + tagName + " ")}>{name}</div>
                             <div className="msg-tag">{tag}</div>
                         </div>
                         <div className="msg-body">{msg.content}</div>
-                        <div className="msg-footer">{prefix} {msg.timeStamp} {suffix}</div>
+                        <div className="msg-footer">
+                            {footer}
+                        </div>
                     </div>
                 )
             } else {
                 return (
                     <div>
                         <div className="d-flex flex-row msg-header">
-                            <div className="msg-user">{name}</div>
+                            <div className="msg-user" onClick={event => props.auto("/msg " + tagName + " ")}>{name}</div>
                             <div className="msg-tag">{tag}</div>
                         </div>
                         <div className="msg-body">{msg.content}</div>
@@ -73,7 +81,7 @@ function Content(props) {
             return (
                 <div>
                     <div className="msg-body">{msg.content}</div>
-                    <div className="msg-footer">{prefix} {msg.timeStamp} {suffix}</div>
+                    <div className="msg-footer">{footer}</div>
                 </div>
             )
         } else {

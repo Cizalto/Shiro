@@ -474,6 +474,8 @@ html{
   border-radius: 1vmin;
   padding-top: .5vh;
   padding-bottom: .5vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 .whisper .msg-header {
@@ -481,7 +483,16 @@ html{
 }
 
 .whisper .msg-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
   color: #cf606E;
+  font-size: .8rem;
+  font-weight: bold;
+}
+
+.whisper .to {
+  margin-left: .25rem;
 }
 
 .msg-header {

@@ -90,11 +90,17 @@ function Body(props) {
         }
     }
 
+    function autoComplete(value) {
+        console.log("Valluueeee",value);
+        setMsg(value);
+        userInput.focus();
+    }
+
     return(
         <div className="chat">
             <div className="content">
                 <ScrollableFeed className="feed">
-                    <Content messages={props.history} users={props.userList} soc={socket}/>
+                    <Content messages={props.history} users={props.userList} soc={socket} auto={autoComplete}/>
                 </ScrollableFeed>
             </div>
             <div className="textBar">

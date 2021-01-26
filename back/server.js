@@ -286,9 +286,9 @@ function send(event, content, room, sender, type, timeStamp) {
                         })
                         let userId = getKeyByValue(rooms[room].userList,username.join(" "))
                         if (userId){
-                            io.to(userId).to(client.id).emit("chat", {content: msg.join(" "), room: room, sender:client.id, type:'whisper',timeStamp: getTimestamp()})
+                            io.to(userId).to(client.id).emit("chat", {content: msg.join(" "), room: room, sender:client.id, to: username.join(" "), type:'whisper',timeStamp: getTimestamp()})
                         } else {
-                            client.emit('update', { content: 'You can\'t send a private message to '+username.join(" ")+' because this user is not connected to the channel you sent the message in.',to: username.join(" "), sender: 'server', timeStamp: getTimestamp() })
+                            client.emit('update', { content: 'You can\'t send a private message to '+username.join(" ")+' because this user is not connected to the channel you sent the message in.', sender: 'server', timeStamp: getTimestamp() })
                         }
                     }else {
                         client.emit('update', { content: 'The command is missing an argument.', sender: 'server', timeStamp: getTimestamp() })
