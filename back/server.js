@@ -1,3 +1,4 @@
+const fs = require('fs');
 const { Server, Socket } = require("socket.io");
 const io = require('socket.io')({
     cors: {
@@ -5,10 +6,31 @@ const io = require('socket.io')({
         methods: ["GET", "POST"]
     }
 });
-var count = 0;
 var token;
 var userList = {};
-var rooms ={roomList:['général'],général:{userList:{},name: 'général',history: []}}
+var rooms
+fs.readFile('rooms.json', 'utf-8', (err, data) => {
+    if (err) {
+        throw err;
+    }
+
+    // parse JSON object
+    let dataObj = JSON.parse(data.toString());
+    if (dataObj.roomList){
+        rooms = dataObj
+        Object.keys(rooms).map(function(key, index) {
+            if(rooms[key].userList){
+                rooms[key].userList = {}
+            }
+          });
+    }else {
+        rooms = {count: 0,roomList:['général'],général:{userList:{},name: 'général',history: []}}
+    }
+
+    // print JSON object
+    console.log(rooms);
+});
+
 
 io.use(function(socket, next) {
     token = socket.request._query.token
@@ -69,6 +91,14 @@ function send(event, content, room, sender, type, timeStamp) {
                 return null;
             }
         })
+
+        let data = JSON.stringify(rooms, null, 4) 
+        fs.writeFile('rooms.json', data, (err) => {
+            if (err) {
+                throw err;
+            }
+            console.log("JSON data is saved.");
+        });
     } else {
         io.emit(event, content);
     }
@@ -83,8 +113,8 @@ function send(event, content, room, sender, type, timeStamp) {
         client.token = token
         console.log('A user connected with id: ' + client.id);
         client.on('first-join', (name, room) => {
-            client.number = count;
-            count++
+            client.number = rooms.count;
+            rooms.count++
             console.log(client.number);
             client.join(room)
             client.emit("success")
@@ -258,10 +288,10 @@ function send(event, content, room, sender, type, timeStamp) {
                         if (userId){
                             io.to(userId).to(client.id).emit("chat", {content: msg.join(" "), room: room, sender:client.id, type:'whisper',timeStamp: getTimestamp()})
                         } else {
-                            client.emit('update', { content: 'You can\'t send a private message to '+username.join(" ")+' because this user is not connected to the channel you sent the message in.', sender: 'server', timeStamp: getTimestamp() })
+                            client.emit('update', { content: 'You can\'t send a private message to '+username.join(" ")+' because this user is not connected to the channel you sent the message in.',to: username.join(" "), sender: 'server', timeStamp: getTimestamp() })
                         }
                     }else {
-                        client.emit('update', { content: 'the command is missing an argument', sender: 'server', timeStamp: getTimestamp() })
+                        client.emit('update', { content: 'The command is missing an argument.', sender: 'server', timeStamp: getTimestamp() })
                     }
                         break;
                     case 'token':

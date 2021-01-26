@@ -1,0 +1,38 @@
+{
+    "count": 2,
+    "roomList": [
+        "général"
+    ],
+    "général": {
+        "userList": {
+            "2M2jCh915Jo5RzDvAAAB": "Ash Ketchum#0001"
+        },
+        "name": "général",
+        "history": [
+            {
+                "content": "Ash Ketchum joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "16:46",
+                "userName": null
+            },
+            {
+                "content": "Ash Ketchum#0000 has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "16:47",
+                "userName": null
+            },
+            {
+                "content": "Ash Ketchum joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "16:47",
+                "userName": null
+            }
+        ]
+    }
+}
