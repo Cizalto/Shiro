@@ -6,7 +6,6 @@ let socket;
 const uuid = uuidv4();
 let host = "localhost:8000";
 
-        
 //local host
 // console.log(socket.id);
 
