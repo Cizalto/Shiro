@@ -1,3 +1,5 @@
+import slicer from '../Methods/Slicer';
+
 function Menu(props) {
 
     function displayConnectedUsers() {
@@ -6,9 +8,15 @@ function Menu(props) {
             var content = [];
             let count = 0;
             for(const [key,value] of Object.entries(props.userlist)) {
+                let user = slicer(value)
                 content[count] = (
-                    <div className="username">
-                        {value}
+                    <div className="user">
+                        <div className="name">
+                            {user[0]}
+                        </div>
+                        <div className="tag">
+                            {user[1]}
+                        </div>
                     </div>
                 )
                 count++;

@@ -1,5 +1,5 @@
-import { get } from 'jquery';
 import React from 'react';
+import slicer from '../Methods/Slicer';
 
 
 function Content(props) {
@@ -21,14 +21,27 @@ function Content(props) {
     }
 
     function msgUserBuilder(msg,index,length) {
-        let role = "";
+        let tagName;
+        if (props.users[msg.sender]) {
+            tagName = props.users[msg.sender];
+            console.log("user connected", props.users[msg.sender])
+        } else if (props.users[socket.token]) {
+            tagName = props.users[socket.token];
+        } else {
+            tagName = msg.userName;
+        }
+
+        let user = slicer(tagName);
+        let name = user[0];
+        let tag = user[1];
+
         if (index === 0) {
             if (length === 1) {
                return (
                     <div>
                         <div className="d-flex flex-row msg-header">
-                            <div className="msg-user">{props.users[msg.sender] || props.users[socket.token] || msg.name }</div>
-                            <div className="msg-role">{role}</div>
+                            <div className="msg-user">{name}</div>
+                            <div className="msg-tag">{tag}</div>
                         </div>
                         <div className="msg-body">{msg.content}</div>
                         <div className="msg-footer">Posted at {msg.timeStamp}</div>
@@ -38,8 +51,8 @@ function Content(props) {
                 return (
                     <div>
                         <div className="d-flex flex-row msg-header">
-                            <div className="msg-user">{props.users[msg.sender] || props.users[socket.token] || msg.name}</div>
-                            <div className="msg-role">{role}</div>
+                            <div className="msg-user">{name}</div>
+                            <div className="msg-tag">{tag}</div>
                         </div>
                         <div className="msg-body">{msg.content}</div>
                     </div>

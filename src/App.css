@@ -29,11 +29,20 @@ body {
   font-weight: bold;
 }
 
-.menu .username {
-  color: white;
+.menu .user {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  color: #cdc7be;
   margin-left: 1vmax;
   font-size: medium;
   font-weight: normal;
+}
+
+.menu .tag {
+  margin-left: .5vw;
+  opacity: .7;
+  font-size: small;
 }
 
 #root{
@@ -53,11 +62,7 @@ html{
   flex: 1;
   /* margin-top: 15vh; */
   justify-content: center;
-  /* align-items: center; */
   text-align: center;
-  /* background-image: url(./images/modalBackground.png); */
-  /* background-repeat: repeat; */
-  /* background-size: 76vh; */
 }
 
 @keyframes slide {
@@ -345,6 +350,7 @@ html{
   display: flex;
   flex-direction: row;
   padding: .75vmax;
+  border-radius: 0;
 }
 
 .channel p {
@@ -415,7 +421,7 @@ html{
   /* margin: 0 auto;; */
   word-wrap: none;
   color: rgb(204, 198, 189);
-  /* background-color: rgba(110, 110, 110, 0.3); */
+  /* background-color: #cf606E; */
   /* border-radius: 1vmin; */
 }
 
@@ -479,12 +485,12 @@ html{
   padding: 0;
 }
 
-.msg-role {
+.msg-tag {
   border: none;
   font-size: medium;
   color: #dcdcd3;
   padding: 0;
-  margin-left: 2vw;
+  margin-left: .5vw;
   opacity: .7;
 }
 
