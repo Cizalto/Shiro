@@ -20,13 +20,21 @@ body {
   min-width: 15vw;
   width: 20vw;
   background-color: #2b2d33;
+  padding: 1vmax;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu .userlist {
+  flex-grow: inherit;
+  flex: 1;
 }
 
 .menu .title {
   color: white;
-  margin: 1vmax;
   font-size: large;
   font-weight: bold;
+  margin-bottom: 1vh;
 }
 
 .menu .user {
@@ -34,7 +42,6 @@ body {
   flex-direction: row;
   align-items: flex-end;
   color: #cdc7be;
-  margin-left: 1vmax;
   font-size: medium;
   font-weight: normal;
 }
@@ -43,6 +50,17 @@ body {
   margin-left: .5vw;
   opacity: .7;
   font-size: small;
+}
+
+.menu .profile {
+  color: white;
+  margin: 1vh;
+}
+
+.menu .username {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 }
 
 #root{
@@ -351,6 +369,9 @@ html{
   flex-direction: row;
   padding: .75vmax;
   border-radius: 0;
+  max-width: 15rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .channel p {
@@ -419,9 +440,8 @@ html{
   justify-content: center;
 
   /* margin: 0 auto;; */
-  word-wrap: none;
+  word-wrap: break-word;
   color: rgb(204, 198, 189);
-  
 }
 
 .info .msg {
@@ -429,6 +449,7 @@ html{
   margin-bottom: 2vh;
   opacity: .7;
   /* margin-top: auto; */
+  word-wrap: break-word;
 }
 
 .info .body {
@@ -464,7 +485,9 @@ html{
   margin-bottom: .5vh;
   margin-left: 2vw;
   margin-right: 2vw;
-  /* overflow-wrap: normal; */
+  word-wrap: break-word;
+  line-break: auto;
+  overflow: hidden;
 }
 
 .whisper {

@@ -105,14 +105,12 @@ function Channels(props) {
                 channelList.map((channel, i) => {
 
                     if (channel.label === currentChannel) {
-                        console.log("activeChannel[0]: ",activeChannel[0]);
-                        console.log("activeChannel[1]: ",activeChannel[1]);
                         return (
                             <div className="frame">
                                 <div className="d-flex flex-column flex-grow-1" key={i}>
                                     {channel.content}
                                 </div>
-                                <Menu title="Connected Users" userlist={props.channels[currentChannel].userList}/>
+                                <Menu title="Connected Users" userlist={props.channels[currentChannel].userList} socket={socket.id}/>
                             </div>
                         )
                     } else {

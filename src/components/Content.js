@@ -10,7 +10,8 @@ function Content(props) {
         let indexBlock = 0;
         props.messages.map(function(msg,index) {
             if (((index > 0 && msg.sender !== props.messages[index-1].sender)
-            || (index > 0 && msg.type !== props.messages[index-1].type && msg.sender !== "server"))) {
+            || (index > 0 && msg.type !== props.messages[index-1].type && msg.sender !== "server")
+            || (index > 0 && msg.sender === props.messages[index-1].sender && msg.type === props.messages[index-1].type && msg.sender !== "server" && msg.to !== props.messages[index-1].to))) {
                 blockArr = [...blockArr, [msg]];
                 indexBlock++
             } else{
@@ -23,7 +24,7 @@ function Content(props) {
 
     function msgUserBuilder(msg,index,length) {
         //selecet TagName
-        let tagName;
+        let tagName = "SlicerUnchanged";
         if (props.users[msg.sender]) {
             tagName = props.users[msg.sender];
         } else if (props.users[socket.token]) {
@@ -96,6 +97,7 @@ function Content(props) {
             if (length === 1) {
                 return (
                     <div className="d-flex flex-row">
+                        <i class="fas fa-arrow-left"></i>
                         <div className="symbol">{String.fromCharCode(char)}</div>
                         <div className="body content">{msg.content}</div>
                     </div>
@@ -103,6 +105,7 @@ function Content(props) {
             } else {
                 return (
                     <div className="d-flex flex-row">
+                        <i class="fas fa-arrow-left"></i>
                         <div className="symbol">{String.fromCharCode(char)}</div>
                         <div className="body content">{msg.content}</div>
                     </div>

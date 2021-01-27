@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import slicer from '../Methods/Slicer';
 
 function Menu(props) {
+    const [userCount,setUserCount] = useState(0);
 
     function displayConnectedUsers() {
         console.log("Userlist",props.userlist);
@@ -21,6 +23,12 @@ function Menu(props) {
                 )
                 count++;
             }
+            console.log("count",count);
+            if (userCount !== count){
+                setUserCount(count);
+            }
+
+            console.log("userCount",userCount);
 
             return content.map(element => {
                 console.log("Element",element);
@@ -32,13 +40,39 @@ function Menu(props) {
         }
     }
 
+    function userType() {
+        return "Connected as Guest"
+    }
+
+    //slice name
+    console.log("userlist menu", props.userlist);
+    let name;
+    let tag;
+    if (props.userlist !== undefined && props.userlist !== null) {
+        name = slicer(props.userlist[props.socket])[0]
+        tag = slicer(props.userlist[props.socket])[1]
+    }
+
+    let titleContent = props.title + " ( " + userCount + " )";
+
     return (
         <div className="menu">
-            <div className="title">
-                {props.title}
-            </div>
             <div className="userlist">
-                {displayConnectedUsers()}
+                <div className="title">
+                    {titleContent}
+                </div>
+                <div className="users">
+                    {displayConnectedUsers()}
+                </div>
+            </div>
+            <div className="profile">
+                <div className="username">
+                    <div className="name">{name}</div>
+                    <div className="tag">{tag}</div>
+                </div>
+                <div className="userType">
+                    {userType()}
+                </div>
             </div>
         </div>
     )

@@ -1,48 +1,22 @@
 {
-    "count": 15,
+    "count": 13,
     "roomList": [
-        "général",
-        "brazil"
+        "général"
     ],
     "général": {
         "userList": {
-            "015HK3gSzlruQanvAAAR": "Applejack#0008",
-            "hlZ66OlMVnYmOkBoAAAX": "Bobby#0011",
-            "wEzH-wKe92nXjCg_AAAb": "Arthemis#0013",
-            "ou93IBiSJCR4IAN8AAAd": "Fluttershy#0014"
+            "N_TGQxRJxbhk2Q2AAAAP": "Steve#0010",
+            "I3zitjA6Fwt3UBzfAAAR": "Obi-Wan#0011",
+            "nuw0jDO0slDqnD0mAAAT": "Princess Leia#0012"
         },
         "name": "général",
         "history": [
             {
-                "content": "Ash Ketchum joined the server.",
-                "type": "join",
-                "sender": "server",
+                "content": "hello",
+                "type": "message",
+                "sender": "L5cQYtB4nTjWs1wVAAAD",
                 "room": "général",
-                "timeStamp": "16:46",
-                "userName": null
-            },
-            {
-                "content": "Ash Ketchum#0000 has left the server",
-                "type": "leave",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "16:47",
-                "userName": null
-            },
-            {
-                "content": "Ash Ketchum joined the server.",
-                "type": "join",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "16:47",
-                "userName": null
-            },
-            {
-                "content": "Alucard joined the server.",
-                "type": "join",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "16:54",
+                "timeStamp": "17:09",
                 "userName": null
             },
             {
@@ -50,7 +24,7 @@
                 "type": "leave",
                 "sender": "server",
                 "room": "général",
-                "timeStamp": "16:54",
+                "timeStamp": "17:09",
                 "userName": null
             },
             {
@@ -58,39 +32,167 @@
                 "type": "leave",
                 "sender": "server",
                 "room": "général",
-                "timeStamp": "16:54",
+                "timeStamp": "17:09",
                 "userName": null
             },
             {
-                "content": "Anakin joined the server.",
+                "content": "Rainbow Dash joined the server.",
                 "type": "join",
                 "sender": "server",
                 "room": "général",
-                "timeStamp": "16:54",
+                "timeStamp": "17:09",
+                "userName": null
+            },
+            {
+                "content": "rgrherhnhe",
+                "type": "message",
+                "sender": "q9O8Rx0Kczqs7l7CAAAL",
+                "room": "général",
+                "timeStamp": "17:09",
+                "userName": "Rainbow Dash#0000"
+            },
+            {
+                "content": "undefined has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:09",
+                "userName": null
+            },
+            {
+                "content": "undefined has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:10",
+                "userName": null
+            },
+            {
+                "content": "undefined has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:10",
+                "userName": null
+            },
+            {
+                "content": "Rainbow Dash#0000 has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:10",
+                "userName": null
+            },
+            {
+                "content": "Ash Ketchum joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:10",
+                "userName": null
+            },
+            {
+                "content": "John Titor joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:10",
                 "userName": null
             },
             {
                 "content": "hello",
                 "type": "message",
-                "sender": "1ABvkxxvWnDsmc75AAAH",
+                "sender": "sJegS-AK1v1vODgoAAAP",
                 "room": "général",
-                "timeStamp": "17:07",
-                "userName": "Anakin#0003"
+                "timeStamp": "17:10",
+                "userName": "John Titor#0002"
             },
             {
-                "content": "Anakin#0003 has left the server",
-                "type": "leave",
-                "sender": "server",
+                "content": "hi",
+                "type": "message",
+                "sender": "ne9KzFtiR4kzRdUTAAAN",
                 "room": "général",
-                "timeStamp": "17:23",
+                "timeStamp": "17:10",
+                "userName": "Ash Ketchum#0001"
+            },
+            {
+                "content": "ubhbuhbub",
+                "type": "message",
+                "sender": "tdf3GU7DmupO1YAuAAAB",
+                "room": "général",
+                "timeStamp": "17:18",
                 "userName": null
             },
             {
-                "content": "Alucard#0002 has left the server",
+                "content": "undefined has left the server",
                 "type": "leave",
                 "sender": "server",
                 "room": "général",
-                "timeStamp": "17:23",
+                "timeStamp": "17:18",
+                "userName": null
+            },
+            {
+                "content": "undefined has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:18",
+                "userName": null
+            },
+            {
+                "content": "Chewie joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:18",
+                "userName": null
+            },
+            {
+                "content": "Yoda joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:18",
+                "userName": null
+            },
+            {
+                "content": "hi chewie",
+                "type": "message",
+                "sender": "mzW1cZ1MJsjmoX17AAAH",
+                "room": "général",
+                "timeStamp": "17:18",
+                "userName": "Yoda#0004"
+            },
+            {
+                "content": "hi",
+                "type": "message",
+                "sender": "GD_B-pgH6PXNNem0AAAF",
+                "room": "général",
+                "timeStamp": "17:18",
+                "userName": "Chewie#0003"
+            },
+            {
+                "content": "undefined has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:19",
+                "userName": null
+            },
+            {
+                "content": "undefined has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:19",
+                "userName": null
+            },
+            {
+                "content": "James Bond joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:19",
                 "userName": null
             },
             {
@@ -98,159 +200,31 @@
                 "type": "join",
                 "sender": "server",
                 "room": "général",
-                "timeStamp": "17:23",
+                "timeStamp": "17:19",
                 "userName": null
             },
             {
-                "content": "Applejack joined the server.",
-                "type": "join",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "17:23",
-                "userName": null
-            },
-            {
-                "content": "Link joined the server.",
-                "type": "join",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "17:37",
-                "userName": null
-            },
-            {
-                "content": "fzefzezef",
+                "content": "po",
                 "type": "message",
-                "sender": "9ocZWJWlb5JSQ_c2AAAN",
+                "sender": "4nlOAEhG6XWmLiapAAAH",
                 "room": "général",
-                "timeStamp": "17:37",
-                "userName": "Link#0006"
+                "timeStamp": "17:19",
+                "userName": "Pinkie Pie#0006"
             },
             {
-                "content": "zfeeffzfezfz",
+                "content": "sgsdtysy",
                 "type": "message",
-                "sender": "9ocZWJWlb5JSQ_c2AAAN",
+                "sender": "3LuoVQIEJkwKTXCiAAAF",
                 "room": "général",
-                "timeStamp": "17:37",
-                "userName": "Link#0006"
+                "timeStamp": "17:19",
+                "userName": "James Bond#0005"
             },
             {
-                "content": "fez",
-                "type": "message",
-                "sender": "9ocZWJWlb5JSQ_c2AAAN",
-                "room": "général",
-                "timeStamp": "17:37",
-                "userName": "Link#0006"
-            },
-            {
-                "content": "ze",
-                "type": "message",
-                "sender": "9ocZWJWlb5JSQ_c2AAAN",
-                "room": "général",
-                "timeStamp": "17:37",
-                "userName": "Link#0006"
-            },
-            {
-                "content": "fez",
-                "type": "message",
-                "sender": "9ocZWJWlb5JSQ_c2AAAN",
-                "room": "général",
-                "timeStamp": "17:37",
-                "userName": "Link#0006"
-            },
-            {
-                "content": "fze",
-                "type": "message",
-                "sender": "9ocZWJWlb5JSQ_c2AAAN",
-                "room": "général",
-                "timeStamp": "17:37",
-                "userName": "Link#0006"
-            },
-            {
-                "content": "fzef",
-                "type": "message",
-                "sender": "9ocZWJWlb5JSQ_c2AAAN",
-                "room": "général",
-                "timeStamp": "17:37",
-                "userName": "Link#0006"
-            },
-            {
-                "content": "ze",
-                "type": "message",
-                "sender": "9ocZWJWlb5JSQ_c2AAAN",
-                "room": "général",
-                "timeStamp": "17:37",
-                "userName": "Link#0006"
-            },
-            {
-                "content": "fef",
-                "type": "message",
-                "sender": "9ocZWJWlb5JSQ_c2AAAN",
-                "room": "général",
-                "timeStamp": "17:37",
-                "userName": "Link#0006"
-            },
-            {
-                "content": "z",
-                "type": "message",
-                "sender": "9ocZWJWlb5JSQ_c2AAAN",
-                "room": "général",
-                "timeStamp": "17:37",
-                "userName": "Link#0006"
-            },
-            {
-                "content": "Pinkie Pie#0004 has left the server",
+                "content": "Pinkie Pie#0006 has left the server",
                 "type": "leave",
                 "sender": "server",
                 "room": "général",
-                "timeStamp": "17:41",
-                "userName": null
-            },
-            {
-                "content": "Obi-Wan joined the server.",
-                "type": "join",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "17:41",
-                "userName": null
-            },
-            {
-                "content": "Obi-Wan#0007 has left the server",
-                "type": "leave",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "17:42",
-                "userName": null
-            },
-            {
-                "content": "Applejack joined the server.",
-                "type": "join",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "17:42",
-                "userName": null
-            },
-            {
-                "content": "Pr Heisenberg joined the server.",
-                "type": "join",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "17:42",
-                "userName": null
-            },
-            {
-                "content": "h-h-yh-y=",
-                "type": "message",
-                "sender": "015HK3gSzlruQanvAAAR",
-                "room": "général",
-                "timeStamp": "17:56",
-                "userName": "Applejack#0008"
-            },
-            {
-                "content": "John Rambo joined the server.",
-                "type": "join",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "18:09",
+                "timeStamp": "17:20",
                 "userName": null
             },
             {
@@ -258,103 +232,113 @@
                 "type": "join",
                 "sender": "server",
                 "room": "général",
-                "timeStamp": "18:10",
+                "timeStamp": "17:20",
                 "userName": null
             },
             {
-                "content": "John Rambo#0010 has left the server",
-                "type": "leave",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "18:25",
-                "userName": null
-            },
-            {
-                "content": "Pr Heisenberg#0009 has left the server",
-                "type": "leave",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "18:25",
-                "userName": null
-            },
-            {
-                "content": "Applejack#0005 has left the server",
-                "type": "leave",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "18:25",
-                "userName": null
-            },
-            {
-                "content": "Link#0006 has left the server",
-                "type": "leave",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "18:25",
-                "userName": null
-            },
-            {
-                "content": "PewDiePie joined the server.",
+                "content": "Ash Ketchum joined the server.",
                 "type": "join",
                 "sender": "server",
                 "room": "général",
-                "timeStamp": "18:25",
+                "timeStamp": "17:22",
                 "userName": null
             },
             {
-                "content": "PewDiePie#0012 has left the server",
-                "type": "leave",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "18:31",
-                "userName": null
-            },
-            {
-                "content": "Arthemis joined the server.",
-                "type": "join",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "18:31",
-                "userName": null
-            },
-            {
-                "content": "Fluttershy joined the server.",
-                "type": "join",
-                "sender": "server",
-                "room": "général",
-                "timeStamp": "18:41",
-                "userName": null
-            },
-            {
-                "content": "eebfvfebfe",
+                "content": "utiktui",
                 "type": "message",
-                "sender": "wEzH-wKe92nXjCg_AAAb",
+                "sender": "1RJnhXT6RSjDt8jWAAAL",
                 "room": "général",
-                "timeStamp": "18:41",
-                "userName": "Arthemis#0013"
+                "timeStamp": "17:22",
+                "userName": "Ash Ketchum#0008"
+            },
+            {
+                "content": "hkiklhlh",
+                "type": "message",
+                "sender": "39uVu7_N78ZJrcFxAAAJ",
+                "room": "général",
+                "timeStamp": "17:22",
+                "userName": "Bobby#0007"
+            },
+            {
+                "content": "James Bond#0005 has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:25",
+                "userName": null
+            },
+            {
+                "content": "James Bond joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:25",
+                "userName": null
+            },
+            {
+                "content": "James Bond#0009 has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:38",
+                "userName": null
+            },
+            {
+                "content": "Steve joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:38",
+                "userName": null
+            },
+            {
+                "content": "Bobby#0007 has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:38",
+                "userName": null
+            },
+            {
+                "content": "Obi-Wan joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:38",
+                "userName": null
+            },
+            {
+                "content": "Ash Ketchum#0008 has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:39",
+                "userName": null
+            },
+            {
+                "content": "Princess Leia joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "17:39",
+                "userName": null
+            },
+            {
+                "content": "gyufu",
+                "type": "message",
+                "sender": "nuw0jDO0slDqnD0mAAAT",
+                "room": "général",
+                "timeStamp": "17:39",
+                "userName": "Princess Leia#0012"
+            },
+            {
+                "content": "gukugkjg",
+                "type": "message",
+                "sender": "I3zitjA6Fwt3UBzfAAAR",
+                "room": "général",
+                "timeStamp": "17:39",
+                "userName": "Obi-Wan#0011"
             }
         ]
-    },
-    "brazil": {
-        "history": [
-            {
-                "content": "Pr Heisenberg#0009 joined the channel.",
-                "type": "join",
-                "sender": "server",
-                "room": "brazil",
-                "timeStamp": "17:57",
-                "userName": null
-            },
-            {
-                "content": "Pr Heisenberg#0009 left the channel.",
-                "type": "leave",
-                "sender": "server",
-                "room": "brazil",
-                "timeStamp": "18:25",
-                "userName": null
-            }
-        ],
-        "name": "brazil",
-        "userList": {}
     }
 }

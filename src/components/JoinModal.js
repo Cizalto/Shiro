@@ -55,6 +55,15 @@ function Modal(props) {
         setUserName(name);
     }
 
+    function checkEnter(event) {
+        if (event.key === 'Enter') {
+            setUserName(name);
+            props.joinAs(userName, "général")
+        } else {
+
+        }
+    }
+
     return (
         <div className="cmodal background-animated">
             <div className="brand">
@@ -98,7 +107,7 @@ function Modal(props) {
                         <h3 className="or">- or -</h3>
                         <div className="log">
                             <h3 className="inputDesc">Type your own username</h3>
-                            <input type="text" className="input" maxLength="23" onChange={event => setUserName(event.target.value)}></input>
+                            <input type="text" className="input" maxLength="23" onChange={event => setUserName(event.target.value)} onKeyPress={event => checkEnter(event)}></input>
                         </div>
                     </div>
                 </div>
