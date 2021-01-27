@@ -124,6 +124,13 @@ function Main (props){
           audio.play();
       })
 
+        socket.on('disconnect', function(){
+          setChannels({channelList:['général'],général:{room: 'général',history:[{content: "Welcome to Général.",sender: 'server', timeStamp: getTimestamp()}]}})
+          setUserList()
+          setLog(false)
+          setFirst(false)
+      });
+
         setFirst(true)
     }
     function displayUpdate(msgObj){
@@ -166,6 +173,7 @@ function Main (props){
     socket.once("noaccount", () => {
             console.log("-- No account found --")
             socket.disconnect()
+            setLog(false)
     })
     console.log(userName);
     socket.emit('first-join',userName, room)
