@@ -4,11 +4,7 @@
         "général"
     ],
     "général": {
-        "userList": {
-            "N_TGQxRJxbhk2Q2AAAAP": "Steve#0010",
-            "I3zitjA6Fwt3UBzfAAAR": "Obi-Wan#0011",
-            "nuw0jDO0slDqnD0mAAAT": "Princess Leia#0012"
-        },
+        "userList": {},
         "name": "général",
         "history": [
             {
@@ -338,6 +334,30 @@
                 "room": "général",
                 "timeStamp": "17:39",
                 "userName": "Obi-Wan#0011"
+            },
+            {
+                "content": "undefined has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "18:39",
+                "userName": null
+            },
+            {
+                "content": "undefined has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "18:39",
+                "userName": null
+            },
+            {
+                "content": "undefined has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "18:39",
+                "userName": null
             }
         ]
     }
