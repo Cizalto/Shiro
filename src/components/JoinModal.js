@@ -38,7 +38,11 @@ function Modal(props) {
         "The Master",
         "Yoda",
         "Arthemis",
-        "John Titor"
+        "John Titor",
+        "Panakin",
+        "Thanos",
+        "unknown",
+        "Tanaka"
     ];
     
     var Checkbox = "9634"; //SQR 9634 //Mark 10003
@@ -69,7 +73,12 @@ function Modal(props) {
             name = name.split("#").join("")
             console.log('#removed ',name)
         }
-        setUserName(name);
+        let nameArr = name.split("");
+        if (nameArr.every(char => char === " ")) {
+            
+        } else {
+            setUserName(name);
+        }
     }
 
     return (
