@@ -52,16 +52,24 @@ function Modal(props) {
     const [signin, setSignIn] = useState(false);
 
     if (userName === "") {
-        setUserName(name);
+        setVerifiedUserName(name);
     }
 
     function checkEnter(event) {
         if (event.key === 'Enter') {
-            setUserName(name);
+            setVerifiedUserName(name);
             props.joinAs(userName, "général")
         } else {
 
         }
+    }
+
+    function setVerifiedUserName(name) {
+        if (name.includes("#")) {
+            name = name.split("#").join("")
+            console.log('#removed ',name)
+        }
+        setUserName(name);
     }
 
     return (
@@ -102,12 +110,12 @@ function Modal(props) {
                                     Join the chat as
                                     <p className="username">{userName}</p>
                                 </button>
-                            <button className="btn reload" onClick={event => {setUserName(nameList[Math.floor(Math.random() * nameList.length)])}}>&#x21bb;</button>
+                            <button className="btn reload" onClick={event => {setVerifiedUserName(nameList[Math.floor(Math.random() * nameList.length)])}}>&#x21bb;</button>
                         </div>
                         <h3 className="or">- or -</h3>
                         <div className="log">
                             <h3 className="inputDesc">Type your own username</h3>
-                            <input type="text" className="input" maxLength="23" onChange={event => setUserName(event.target.value)} onKeyPress={event => checkEnter(event)}></input>
+                            <input type="text" className="input" maxLength="23" onChange={event => setVerifiedUserName(event.target.value)} onKeyPress={event => checkEnter(event)}></input>
                         </div>
                     </div>
                 </div>
