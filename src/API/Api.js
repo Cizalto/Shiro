@@ -12,7 +12,7 @@ let host = "https://shi-ro-server.herokuapp.com/";
 function join(username, room){
         console.info("-- Joining --");
         token = 'anon'
-        socket = io(host, { query: { token: token, uuid: uuid, username:username }, autoConnect: false});
+        socket = io(host, { query: { token: token, uuid: uuid, username:username }, autoConnect: true});
         socket.once("success", () => {console.log("-- Connection successful --")})
         socket.open()
         socket.emit('first-join',username, room)
@@ -25,7 +25,7 @@ function joinWithAuth(username, password){
         }else{
                 console.info("-- Joining --");
                 token = CryptoJS.SHA256(username+password)
-                socket = io(host, { query: { token: token, uuid: uuid, username:username }, autoConnect: false  });
+                socket = io(host, { query: { token: token, uuid: uuid, username:username }, autoConnect: true  });
                 socket.open()
                 socket.token = token
         }
