@@ -77,6 +77,12 @@ function Channels(props) {
         }
     }
 
+    function returnToDefaultChannel() {
+        if (props.channel.channelList.search(currentChannel)) {
+            currentChannel = "général";
+        }
+    }
+
     //history log
     console.log('====================================');
     console.log("Channels history", props.channels);

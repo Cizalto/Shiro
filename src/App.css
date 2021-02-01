@@ -23,11 +23,20 @@ body {
   padding: 1vmax;
   display: flex;
   flex-direction: column;
+  height: 95vh;
+}
+
+.menu .connectedUsers {
+  display: flex;
+  flex-direction: column;
+  flex-grow: inherit;
+  flex: 1;
 }
 
 .menu .userlist {
   flex-grow: inherit;
   flex: 1;
+  max-height: 80vh;
 }
 
 .menu .title {

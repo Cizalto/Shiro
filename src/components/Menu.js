@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import slicer from '../Methods/Slicer';
+import ScrollableFeed from 'react-scrollable-feed';
 
 function Menu(props) {
     const [userCount,setUserCount] = useState(0);
@@ -57,13 +58,15 @@ function Menu(props) {
 
     return (
         <div className="menu">
-            <div className="userlist">
+            <div className="connectedUsers">
                 <div className="title">
                     {titleContent}
                 </div>
-                <div className="users">
-                    {displayConnectedUsers()}
-                </div>
+                <ScrollableFeed className="feed">
+                    <div className="userlist">
+                        {displayConnectedUsers()}
+                    </div>
+                </ScrollableFeed>
             </div>
             <div className="profile">
                 <div className="username">

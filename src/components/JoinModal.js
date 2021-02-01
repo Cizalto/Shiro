@@ -75,7 +75,7 @@ function Modal(props) {
         }
         let nameArr = name.split("");
         if (nameArr.every(char => char === " ")) {
-            
+
         } else {
             setUserName(name);
         }
