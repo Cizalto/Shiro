@@ -1,10 +1,12 @@
 {
-    "count": 13,
+    "count": 18,
     "roomList": [
         "général"
     ],
     "général": {
-        "userList": {},
+        "userList": {
+            "Xmg5ncQ1SxzhJeV2AAAD": "Jack the Reaper#0017"
+        },
         "name": "général",
         "history": [
             {
@@ -332,9 +334,77 @@
                 "type": "message",
                 "sender": "I3zitjA6Fwt3UBzfAAAR",
                 "room": "général",
-                "timeStamp": "17:39",
-                "userName": "Obi-Wan#0011"
+                "timeStamp": "18:41",
+                "userName": "Arthemis#0013"
             },
+            {
+                "content": "Chewie joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "19:30",
+                "userName": null
+            },
+            {
+                "content": "Rarity joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "19:30",
+                "userName": null
+            },
+            {
+                "content": "yop",
+                "type": "message",
+                "sender": "DRgAlt2u5T7Is9vwAAAB",
+                "room": "général",
+                "timeStamp": "19:30",
+                "userName": "Chewie#0015"
+            },
+            {
+                "content": "Chewie#0015 has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "19:31",
+                "userName": null
+            },
+            {
+                "content": "nice",
+                "type": "message",
+                "sender": "fcO13p-Ze17TDuLKAAAD",
+                "room": "général",
+                "timeStamp": "19:31",
+                "userName": "Rarity#0016"
+            },
+            {
+                "content": "it works",
+                "type": "message",
+                "sender": "fcO13p-Ze17TDuLKAAAD",
+                "room": "général",
+                "timeStamp": "19:31",
+                "userName": "Rarity#0016"
+            },
+            {
+                "content": "Jack the Reaper joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "19:33",
+                "userName": null
+            },
+            {
+                "content": "Jack the Reaper#0017 has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "19:45",
+                "userName": null
+            }
+        ]
+    },
+    "brazil": {
+        "history": [
             {
                 "content": "undefined has left the server",
                 "type": "leave",

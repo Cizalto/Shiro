@@ -11,6 +11,7 @@ function Channels(props) {
 
     var channelList = [
         {
+            id: 'général',
             label: 'général',
             content: (
                 <div className="channel-content">
@@ -23,8 +24,10 @@ function Channels(props) {
     function addChannel() {
         for (let i = 1; i <channels.channelList.length; i++ ){
             console.log("For loop count", i);
+            console.log("Channel List", channels.channelList);
             var newChannel =  {
-                label: channels.channelList[i],
+                id: channels.channelList[i],
+                label: channels[channels.channelList[i]].name,
                 content: (
                     <div className="channel-content">
                         <Body soc={socket} active={activeChannel[1]} history={channels[channels.channelList[i]].history} channel={channels.channelList[i]} userList={channels[channels.channelList[i]].userList}/>
@@ -97,7 +100,7 @@ function Channels(props) {
                     channelList.map((channel, i) => (
                         <button
                             key={i}
-                            onClick={() => updateChannel(channel.label)}
+                            onClick={() => updateChannel(channel.id)}
                             className={(channel.label === currentChannel) ? 'btn channel active' : 'btn channel'}>
                                 <p>{channel.label}</p>
                                 {showButtonNotification(channel.label)}
@@ -110,7 +113,7 @@ function Channels(props) {
             {
                 channelList.map((channel, i) => {
 
-                    if (channel.label === currentChannel) {
+                    if (channel.id === currentChannel) {
                         return (
                             <div className="frame">
                                 <div className="d-flex flex-column flex-grow-1" key={i}>

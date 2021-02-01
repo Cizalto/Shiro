@@ -74,6 +74,7 @@ function Body(props) {
     function sendMsg() {
         if (msg !== "") {
             console.log("SendMsg:",props.history);
+            console.log("SendMsg to room:",props.channel);
 
 
             socket.emit("post", msg, props.channel, getTimestamp())

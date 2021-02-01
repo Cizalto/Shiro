@@ -17,7 +17,7 @@ function Main (props){
   const [loggedIn, setLog] = useState(false);
   const [msg, setMsg] = useState("");
   const [history, setHistory] = useState([{content: "Welcome to Général.",sender: 'server', timeStamp: getTimestamp()}]);
-  const [channels, setChannels] = useState({channelList:['général'],général:{room: 'général',history:[{content: "Welcome to Général.",sender: 'server', timeStamp: getTimestamp()}]}});
+  const [channels, setChannels] = useState({channelList:['général'],général:{room: 'général',name: 'général',history:[{content: "Welcome to Général.",sender: 'server', timeStamp: getTimestamp()}]}});
   const [userInput, setInput] = useState();
   const [userList, setUserList] = useState();
   const [firstLaunch, setFirst] = useState(false);
@@ -44,17 +44,19 @@ function Main (props){
     console.log("useEffect triggered");
     if (!firstLaunch && loggedIn) {
         socket.on("room-history", (dataObj) =>{
-            console.log("here's", dataObj.content.name,"history:",dataObj.content.history);
+          console.log("DataObj:", dataObj);
+            console.log("here's", dataObj.content.id,"named",dataObj.content.name ,"history:",dataObj.content.history);
             let channels_cpy = channels
-            if (dataObj.content.name == 'général') {
-              channels_cpy.channelList = [dataObj.content.name]
-            }else if (channels_cpy.channelList.find(element => element = dataObj.content.name) !== dataObj.content.name ){
-              channels_cpy.channelList = [...channels_cpy.channelList,dataObj.content.name]
+            if (dataObj.content.id === 'général') {
+              channels_cpy.channelList = [dataObj.content.id]
+            }else if (channels_cpy.channelList.find(element => element = dataObj.content.id) !== dataObj.content.id){
+              channels_cpy.channelList = [...channels_cpy.channelList,dataObj.content.id]
             }
-            channels_cpy[dataObj.content.name] = {}
-            channels_cpy[dataObj.content.name].room = dataObj.content.name 
-            channels_cpy[dataObj.content.name].history = [{content: "Welcome to "+dataObj.content.name,sender: 'server', timeStamp: getTimestamp()},...dataObj.content.history]
-            channels_cpy[dataObj.content.name].userList = {...dataObj.content.userList}
+            channels_cpy[dataObj.content.id] = {}
+            channels_cpy[dataObj.content.id].name = dataObj.content.name 
+            channels_cpy[dataObj.content.id].room = dataObj.content.id 
+            channels_cpy[dataObj.content.id].history = [{content: "Welcome to "+dataObj.content.name,sender: 'server', timeStamp: getTimestamp()},...dataObj.content.history]
+            channels_cpy[dataObj.content.id].userList = {...dataObj.content.userList}
             setChannels(channels_cpy)
             setHistory(historyCpy => ([...historyCpy, ...dataObj.content.history]))
             console.log('====================================');
@@ -79,7 +81,7 @@ function Main (props){
         socket.on("update-channel-users", (channel) => {
           console.log("This is the channel wich got a userList update:",channel);
             let channels_cpy = channels
-            channels_cpy[channel.name].userList = channel.userList
+            channels_cpy[channel.id].userList = channel.userList
             setChannels(channels_cpy)
             console.log("Here's the",channel.name+" userList:",channel.userList);
             console.log('====================================');
@@ -99,6 +101,15 @@ function Main (props){
           setUserList(userList)
 
           updateScroll();
+        })
+
+        socket.on("rename-channel", (newName, room) => {
+          let channels_cpy = channels
+          console.log("Renaming channel",channels_cpy[room].name,"to", newName);
+          channels_cpy[room].name = newName
+          console.log("Channels with the new channel name:", channels_cpy)
+          setChannels(channels_cpy)
+          forceUpdate();
         })
 
         socket.on('getroomlist', (roomList) =>{
@@ -141,7 +152,7 @@ function Main (props){
         } else {
           room = 'général'
         }
-        console.log("The room i'm gonna display the message is", room);
+        console.log("The room in wich i'm gonna display the message is", room);
         let channels_cpy = channels
         channels_cpy[room].history = [...channels_cpy[room].history, msgObj]
         setChannels(channels_cpy)
