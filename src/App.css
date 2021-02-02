@@ -389,7 +389,7 @@ html{
 
 .channel .symbol {
   color: rgb(223, 81, 81);
-  margin-left: .75vw;
+  margin-right: .75vw;
   font-size: .75rem;
 }
 

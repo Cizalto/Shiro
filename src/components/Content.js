@@ -41,8 +41,6 @@ function Content(props) {
         //check whisper
         let footer = "";
         if (msg.type === "whisper") {
-            console.log("to ",msg.to);
-            console.log("tagName ",tagName);
 
             if (msg.to === props.users[socket.id]) {
                 footer = tagName + " whispered to you at " + msg.timeStamp;
@@ -156,7 +154,6 @@ function Content(props) {
     return msgStacker().map(function(block) {
         let msgOrigin;
         let sender = block[0].sender;
-        console.log("msg sender",sender);
         if (sender !== 'server') {
             if (sender === socket.id) {
                 msgOrigin = "message self";

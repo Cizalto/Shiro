@@ -46,12 +46,16 @@ function Channels(props) {
         addChannel();
     }
 
+    if (!props.channels.channelList.some((element) => element === currentChannel)) {
+        setCurrentChannel("général");
+    }
+
     //channel log
-    console.log('====================================');
-    console.log("The actual Channel count:",props.channels.channelList.length);
-    console.log("The displayed channel count:",channelList.length);
-    console.log("The react component Channel list:",channelList);
-    console.log('====================================');
+    // console.log('====================================');
+    // console.log("The actual Channel count:",props.channels.channelList.length);
+    // console.log("The displayed channel count:",channelList.length);
+    // console.log("The react component Channel list:",channelList);
+    // console.log('====================================');
 
     function updateChannel(label) {
         setCurrentChannel(label);
@@ -68,21 +72,25 @@ function Channels(props) {
         })
     }
 
-    function showButtonNotification(label) {
-        if (label !== currentChannel) {
-            return (
-                <p className="symbol">{String.fromCharCode("9679")}</p>
-            )
+    function showButtonNotification(channelID) {
+        let notif = channels[channelID].unread;
+        if (notif !== undefined) {
+            if (notif === true) {
+                if (channelID === currentChannel) {
+                    props.updateNotifs(channelID);
+                    return null
+                } else {
+                    return (
+                        <p className="symbol">{String.fromCharCode("9679")}</p>
+                    )
+                }
+            } else {
+                return (
+                    null
+                )
+            }
         } else {
-            return (
-                null
-            )
-        }
-    }
-
-    function returnToDefaultChannel() {
-        if (props.channel.channelList.search(currentChannel)) {
-            currentChannel = "général";
+            return null
         }
     }
 
@@ -100,10 +108,10 @@ function Channels(props) {
                     channelList.map((channel, i) => (
                         <button
                             key={i}
-                            onClick={() => updateChannel(channel.id)}
-                            className={(channel.label === currentChannel) ? 'btn channel active' : 'btn channel'}>
+                            onClick={() => {updateChannel(channel.id);props.updateNotifs(channel.id)}}
+                            className={(channel.id === currentChannel) ? 'btn channel active' : 'btn channel'}>
+                                {showButtonNotification(channel.id)}
                                 <p>{channel.label}</p>
-                                {showButtonNotification(channel.label)}
                         </button>
                     ))
                 }

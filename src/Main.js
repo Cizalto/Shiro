@@ -124,6 +124,7 @@ function Main (props){
             console.log("Here's the message Obj:",msgObj);
             let channels_cpy = channels
             channels_cpy[msgObj.room].history = [...channels_cpy[msgObj.room].history, msgObj]
+            channels_cpy[msgObj.room].unread = true;
             setChannels(channels_cpy)
             setHistory(historyCpy => ([...historyCpy, msgObj]))
 
@@ -190,13 +191,18 @@ function Main (props){
     socket.emit('first-join',userName, room)
   }
 
-  // ---------------------------------------------------------------|| End ||
+  function updateChannelsNotifications(channel) {
+    let channels_cpy = channels
+    channels_cpy[channel].unread = false;
+    setChannels(channels_cpy)
+  }
 
+  // ---------------------------------------------------------------|| End ||
 
       if (loggedIn){
         return (
           <div className="main">
-            <Channels soc={socket} history={history} userList={userList} channels={channels} loggedIn={loggedIn}/>
+            <Channels soc={socket} history={history} userList={userList} channels={channels} loggedIn={loggedIn} updateNotifs={updateChannelsNotifications}/>
           </div>
         )
       }else {

@@ -6,7 +6,6 @@ function Menu(props) {
     const [userCount,setUserCount] = useState(0);
 
     function displayConnectedUsers() {
-        console.log("Userlist",props.userlist);
         if (props.userlist !== undefined) {
             var content = [];
             let count = 0;
@@ -24,15 +23,11 @@ function Menu(props) {
                 )
                 count++;
             }
-            console.log("count",count);
             if (userCount !== count){
                 setUserCount(count);
             }
 
-            console.log("userCount",userCount);
-
             return content.map(element => {
-                console.log("Element",element);
                 return element;
             });
         } else {
@@ -46,7 +41,6 @@ function Menu(props) {
     }
 
     //slice name
-    console.log("userlist menu", props.userlist);
     let name;
     let tag;
     if (props.userlist !== undefined && props.userlist !== null) {
