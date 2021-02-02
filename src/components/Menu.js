@@ -44,8 +44,8 @@ function Menu(props) {
     let name;
     let tag;
     if (props.userlist !== undefined && props.userlist !== null) {
-        name = slicer(props.userlist[props.socket])[0]
-        tag = slicer(props.userlist[props.socket])[1]
+        name = slicer(props.userlist[props.socket.id])[0]
+        tag = slicer(props.userlist[props.socket.id])[1]
     }
 
     let titleContent = props.title + " ( " + userCount + " )";
@@ -70,6 +70,7 @@ function Menu(props) {
                 <div className="userType">
                     {userType()}
                 </div>
+                <button className="btn text-white" onClick={() => {props.socket.disconnect()}}>Disconnect</button>
             </div>
         </div>
     )

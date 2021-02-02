@@ -128,7 +128,7 @@ function Channels(props) {
                                 <div className="d-flex flex-column flex-grow-1" key={i}>
                                     {channel.content}
                                 </div>
-                                <Menu title="Connected Users" userlist={props.channels[currentChannel].userList} socket={socket.id}/>
+                                <Menu title="Connected Users" userlist={props.channels[currentChannel].userList} socket={socket}/>
                             </div>
                         )
                     } else {
