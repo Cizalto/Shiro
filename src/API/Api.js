@@ -22,7 +22,7 @@ function join(username, room){
 function joinWithAuth(username, password){
         if (username === "" || password === "") {
                 window.alert("You can't try to connect with an empty name or password")
-        }else{
+        } else {
                 console.info("-- Joining --");
                 token = CryptoJS.SHA256(username+password)
                 socket = io(host, { query: { token: token, uuid: uuid, username:username }, autoConnect: true  });

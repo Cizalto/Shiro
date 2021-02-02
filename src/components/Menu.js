@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import slicer from '../Methods/Slicer';
 import ScrollableFeed from 'react-scrollable-feed';
+import disconnectLogo from '../images/power-button.png';
 
 function Menu(props) {
     const [userCount,setUserCount] = useState(0);
@@ -37,7 +38,9 @@ function Menu(props) {
     }
 
     function userType() {
-        return "Connected as Guest"
+        return (
+            <p className="connectionType">Connected as Guest</p>
+            )
     }
 
     //slice name
@@ -69,8 +72,8 @@ function Menu(props) {
                 </div>
                 <div className="userType">
                     {userType()}
+                    <button className="btn disconnect" onClick={() => {props.socket.disconnect()}}><img src={disconnectLogo} alt="disconnect button icon"></img></button>
                 </div>
-                <button className="btn text-white" onClick={() => {props.socket.disconnect()}}>Disconnect</button>
             </div>
         </div>
     )

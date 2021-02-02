@@ -94,6 +94,16 @@ function Channels(props) {
         }
     }
 
+    function showCross(label, id) {
+        if (label === "général") {
+            return null
+        } else {
+            return (
+                <button className="btn delete" onClick={() => {socket.emit("post", "/quit "+label, id, null)}}>&times;</button>
+            )
+        }
+    }
+
     //history log
     console.log('====================================');
     console.log("Channels history", props.channels);
@@ -112,7 +122,7 @@ function Channels(props) {
                             className={(channel.id === currentChannel) ? 'btn channel active' : 'btn channel'}>
                                 {showButtonNotification(channel.id)}
                                 <p>{channel.label}</p>
-                                <button className="btn text-white" onClick={() => {socket.emit("post", "/quit "+channel.label, channel.id, null)}}>X</button>
+                                {showCross(channel.label, channel.id)}
                         </button>
                     ))
                 }

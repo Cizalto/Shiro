@@ -1,11 +1,11 @@
 {
-    "count": 18,
+    "count": 19,
     "roomList": [
         "général"
     ],
     "général": {
         "userList": {
-            "Xmg5ncQ1SxzhJeV2AAAD": "Jack the Reaper#0017"
+            "P1aQ89DL1mMTcHKnAAAB": "Alucard#0018"
         },
         "name": "général",
         "history": [
@@ -399,6 +399,22 @@
                 "sender": "server",
                 "room": "général",
                 "timeStamp": "19:45",
+                "userName": null
+            },
+            {
+                "content": "Alucard joined the server.",
+                "type": "join",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "18:11",
+                "userName": null
+            },
+            {
+                "content": "Alucard#0018 has left the server",
+                "type": "leave",
+                "sender": "server",
+                "room": "général",
+                "timeStamp": "18:12",
                 "userName": null
             }
         ]

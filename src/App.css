@@ -66,6 +66,32 @@ body {
   margin: 1vh;
 }
 
+.menu .userType {
+  display: flex;
+  flex-direction: row;
+}
+
+.menu .connectionType {
+  margin: 0;
+  flex-grow: inherit;
+  flex: 1;
+}
+
+.menu .disconnect {
+  padding: .0vmin;
+  /* margin-top: 1vh; */
+  margin-right: .5vw;
+  /* width: max-content; */
+  color: #cf606E;
+  /* overflow: hidden;
+  border: #cf606E 2px solid; */
+  /* border-radius: .5vw; */
+}
+
+.disconnect img {
+  height: 2vh;
+}
+
 .menu .username {
   display: flex;
   flex-direction: row;
@@ -369,18 +395,29 @@ html{
   box-shadow: none !important;
 }
 
-.channel.btn:hover {
+.channels .btn:hover {
   color: white !important;
 }
 
 .channel.btn {
   display: flex;
   flex-direction: row;
+  vertical-align: middle;
   padding: .75vmax;
   border-radius: 0;
-  max-width: 15rem;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.channel .delete {
+  padding: 0;
+  margin: 0;
+  margin-left: .75vw;
+  margin-top: -.1vh;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #dcdcd3;
+  overflow: hidden;
 }
 
 .channel p {
@@ -389,8 +426,10 @@ html{
 
 .channel .symbol {
   color: rgb(223, 81, 81);
+  margin-top: .4vh;
   margin-right: .75vw;
   font-size: .75rem;
+  overflow: hidden;
 }
 
 .channel-content {
