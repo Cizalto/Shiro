@@ -19,7 +19,7 @@ Shiro est une application web de chat par protocole IRC.
 
 ## Commandes
 
-Gestion des salons
+###Gestion des salons
 
 - /create nomDuSalon - Permet de créer un nouveaux salon.
 - /delete nomDuSalon - Supprime le salon mentionné.
