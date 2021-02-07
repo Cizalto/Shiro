@@ -2,7 +2,9 @@
 
 # Shiro, the quick chat app
 
-Shiro est une application web de chat par protocole IRC. 
+Shiro est une application web de chat par protocole IRC.
+
+** **
 
 ## Features
 
