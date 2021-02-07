@@ -25,20 +25,20 @@ Gestion des salons
 - /delete nomDuSalon - Supprime le salon mentionné.
 - /rename nomDusalon nouveauNom - Renomme le salon.
 
+
 Accès aus salons
 
-/join nomDuSalon - Permet de rejoindre un salon.
+- /join nomDuSalon - Permet de rejoindre un salon.
+- /quit nomDuSalon - Permet de quitter un salon.
 
-/quit nomDuSalon - Permet de quitter un salon.
 
 Informations
 
-/help - Affiche la liste des commandes et leur fonctionnement
+- /help - Affiche la liste des commandes et leur fonctionnement
+- /users - Affiche la liste des utilisateurs connectés tout salons confondus
+- /list - Affiche la liste des salons existans.
 
-/users - Affiche la liste des utilisateurs connectés tout salons confondus
-
-/list - Affiche la liste des salons existans.
 
 Utilisateurs
 
-/nick nouveauPseudo - Changer son pseudonyme sur le chat
+- /nick nouveauPseudo - Changer son pseudonyme sur le chat
