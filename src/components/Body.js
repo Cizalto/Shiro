@@ -91,6 +91,14 @@ function Body(props) {
         }
     }
 
+    if (props.autoCompleted !== null){
+        if(msg.charAt(msg.length-5) !== "#"){
+            setMsg("/msg " + props.autoCompleted);
+        }
+        userInput.focus();
+        props.resetAutoComplete();
+    }
+
     function autoComplete(value) {
         console.log("Valluueeee",value);
         setMsg(value);

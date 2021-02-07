@@ -13,7 +13,7 @@ function Menu(props) {
             for(const [key,value] of Object.entries(props.userlist)) {
                 let user = slicer(value)
                 content[count] = (
-                    <div className="user">
+                    <div className="user" onClick={event => props.autoCompleteFromMenu(value)}>
                         <div className="name">
                             {user[0]}
                         </div>

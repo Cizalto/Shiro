@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Body from './Body';
 import Menu from './Menu';
 
@@ -6,8 +6,9 @@ function Channels(props) {
     let socket = props.soc;
 
     const [currentChannel, setCurrentChannel] = useState('général');
-    const [activeChannel, setActiveChannel] = useState([false,true]);
+    const [activeChannel, setActiveChannel] = useState([false, true]);
     const [channels, setChannels] = useState(props.channels)
+    const [userToSendAMessage, setuserNameToSendAMessage] = useState(null)
 
     var channelList = [
         {
@@ -15,22 +16,22 @@ function Channels(props) {
             label: 'général',
             content: (
                 <div className="channel-content">
-                    <Body soc={socket} active={activeChannel[0]} history={channels[channels.channelList[0]].history} channel={channels.channelList[0]} userList={channels[channels.channelList[0]].userList}/>
+                    <Body soc={socket} active={activeChannel[0]} history={channels[channels.channelList[0]].history} channel={channels.channelList[0]} userList={channels[channels.channelList[0]].userList} autoCompleted={userToSendAMessage} resetAutoComplete={resetAutoComplete}/>
                 </div>
             )
         }
     ];
 
     function addChannel() {
-        for (let i = 1; i <channels.channelList.length; i++ ){
+        for (let i = 1; i < channels.channelList.length; i++) {
             console.log("For loop count", i);
             console.log("Channel List", channels.channelList);
-            var newChannel =  {
+            var newChannel = {
                 id: channels.channelList[i],
                 label: channels[channels.channelList[i]].name,
                 content: (
                     <div className="channel-content">
-                        <Body soc={socket} active={activeChannel[1]} history={channels[channels.channelList[i]].history} channel={channels.channelList[i]} userList={channels[channels.channelList[i]].userList}/>
+                        <Body soc={socket} active={activeChannel[1]} history={channels[channels.channelList[i]].history} channel={channels.channelList[i]} userList={channels[channels.channelList[i]].userList} autoCompleted={userToSendAMessage} resetAutoComplete={resetAutoComplete}/>
                     </div>
                 )
             };
@@ -38,11 +39,19 @@ function Channels(props) {
         }
     }
 
-    if (channels !== props.channels){
+    function autoCompleteFromMenu(user) {
+        setuserNameToSendAMessage(user)
+    }
+
+    function resetAutoComplete(){
+        setuserNameToSendAMessage(null)
+    }
+
+    if (channels !== props.channels) {
         setChannels(props.channels)
     }
 
-    if (props.channels.channelList.length>channelList.length) {
+    if (props.channels.channelList.length > channelList.length) {
         addChannel();
     }
 
@@ -99,7 +108,7 @@ function Channels(props) {
             return null
         } else {
             return (
-                <button className="btn delete" onClick={() => {socket.emit("post", "/quit "+label, id, null)}}>&times;</button>
+                <button className="btn delete" onClick={() => { socket.emit("post", "/quit " + label, id, null) }}>&times;</button>
             )
         }
     }
@@ -110,7 +119,7 @@ function Channels(props) {
     console.log('====================================');
 
     //return jsx
-    return(
+    return (
         <div className="d-flex flex-column flex-grow-1">
             {/* Create channel tabs */}
             <div className="channels">
@@ -118,11 +127,11 @@ function Channels(props) {
                     channelList.map((channel, i) => (
                         <button
                             key={i}
-                            onClick={() => {updateChannel(channel.id);props.updateNotifs(channel.id)}}
+                            onClick={() => { updateChannel(channel.id); props.updateNotifs(channel.id) }}
                             className={(channel.id === currentChannel) ? 'btn channel active' : 'btn channel'}>
-                                {showButtonNotification(channel.id)}
-                                <p>{channel.label}</p>
-                                {showCross(channel.label, channel.id)}
+                            {showButtonNotification(channel.id)}
+                            <p>{channel.label}</p>
+                            {showCross(channel.label, channel.id)}
                         </button>
                     ))
                 }
@@ -138,7 +147,7 @@ function Channels(props) {
                                 <div className="d-flex flex-column flex-grow-1" key={i}>
                                     {channel.content}
                                 </div>
-                                <Menu title="Connected Users" userlist={props.channels[currentChannel].userList} socket={socket}/>
+                                <Menu title="Connected Users" userlist={props.channels[currentChannel].userList} autoCompleteFromMenu={autoCompleteFromMenu} socket={socket} />
                             </div>
                         )
                     } else {
