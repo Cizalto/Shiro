@@ -2,7 +2,9 @@
 
 # Shiro, the quick chat app
 
-Shiro est une application web de chat par protocole IRC. 
+Shiro est une application web de chat par protocole IRC.
+
+** **
 
 ## Features
 
@@ -17,14 +19,30 @@ Shiro est une application web de chat par protocole IRC.
 - Gestion de role
 - Liens et images affichés dans le chat
 
+** **
+
 ## Commandes
 
-/create nomDuSalon - Permet de créer un nouveaux salon.
+**Gestion des salons**
 
-/join nomDuSalon - Permet de rejoindre un salon.
+- /create nomDuSalon - Permet de créer un nouveaux salon.
+- /delete nomDuSalon - Supprime le salon mentionné.
+- /rename nomDusalon nouveauNom - Renomme le salon.
 
-/quit nomDuSalon - Permet de quitter un salon.
 
-/delete nomDuSalon - Supprime le salon mentionné.
+**Accès aus salons**
 
-/nick nouveauPseudo - Changer son pseudonyme sur le chat
+- /join nomDuSalon - Permet de rejoindre un salon.
+- /quit nomDuSalon - Permet de quitter un salon.
+
+
+**Informations**
+
+- /help - Affiche la liste des commandes et leur fonctionnement
+- /users - Affiche la liste des utilisateurs connectés tout salons confondus
+- /list - Affiche la liste des salons existans.
+
+
+**Utilisateurs**
+
+- /nick nouveauPseudo - Changer son pseudonyme sur le chat
