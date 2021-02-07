@@ -434,6 +434,7 @@ html{
 
 .channel-content {
   color: white;
+  /* width: 60vw; */
   display: flex;
   flex: 1;
 }

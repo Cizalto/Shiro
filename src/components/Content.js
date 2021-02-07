@@ -90,13 +90,13 @@ function Content(props) {
         }
     }
 
-    function msgServerBuilder(msg,index,length, char) {
+    function msgServerBuilder(msg,index,length, charDisplay) {
         if (index === 0) {
             if (length === 1) {
                 return (
                     <div className="d-flex flex-row">
                         <i class="fas fa-arrow-left"></i>
-                        <div className="symbol">{String.fromCharCode(char)}</div>
+                        {charDisplay}
                         <div className="body content">{msg.content}</div>
                     </div>
                 )
@@ -104,7 +104,7 @@ function Content(props) {
                 return (
                     <div className="d-flex flex-row">
                         <i class="fas fa-arrow-left"></i>
-                        <div className="symbol">{String.fromCharCode(char)}</div>
+                        {charDisplay}
                         <div className="body content">{msg.content}</div>
                     </div>
                 )
@@ -112,14 +112,14 @@ function Content(props) {
         } else if (index === length-1) {
             return (
                 <div className="d-flex flex-row">
-                    <div className="symbol">{String.fromCharCode(char)}</div>
+                    {charDisplay}
                     <div className="body content">{msg.content}</div>
                 </div>
             )
         } else {
             return (
                 <div className="d-flex flex-row">
-                    <div className="symbol">{String.fromCharCode(char)}</div>
+                    {charDisplay}
                     <div className="body content">{msg.content}</div>
                 </div>
             )
@@ -135,16 +135,20 @@ function Content(props) {
                     </div>
                 )
             } else {
-                let char = null;
+                let charDisplay = null;
                 if (msg.type === "join") {
-                    char = "8594";
+                    charDisplay = (
+                        <div className="symbol">{String.fromCharCode(8594)}</div>
+                    )
                 } else if (msg.type === "leave") {
-                    char = "8592";
+                    charDisplay = (
+                        <div className="symbol">{String.fromCharCode(8592)}</div>
+                    )
                 }
 
                 return (
                     <div className={msg.type}>
-                        {msgServerBuilder(msg, index, block.length, char)}
+                        {msgServerBuilder(msg, index, block.length, charDisplay)}
                     </div>
                 )
             }
