@@ -6,7 +6,7 @@ Shiro est une application web de chat par protocole IRC.
 
 ** **
 
-# Online demo
+## Online demo
 
 You can test our online live demo here : https://shi-ro.herokuapp.com/
 
