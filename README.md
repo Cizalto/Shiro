@@ -47,7 +47,7 @@ Lors de la première connexion, il faut attendre un petit peu, le temps qu'Herok
 **Informations**
 
 - /help - Affiche la liste des commandes et leur fonctionnement.
-- /users [opt: channelName]  - Affiche la liste des utilisateurs connectés tout salons confondus. Vous pouvez ciblé un salon en ajoutant son nom.
+- /users [opt: channelName]  - Affiche la liste des utilisateurs connectés tout salons confondus. Vous pouvez cibler un salon en ajoutant son nom.
 - /list [opt: filtre] - Affiche la liste des salons existants. Vous pouvez filtrer les salons en ajoutant des caractères ou mots. list affichera alors le salons contenant ces caractères
 
 
