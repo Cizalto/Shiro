@@ -10,6 +10,8 @@ Shiro est une application web de chat par protocole IRC.
 
 You can test our online live demo here : https://shi-ro.herokuapp.com/
 
+Lors de la première connexion, il faut attendre un petit peu, le temps qu'Heroku réactive l'application.
+
 ** **
 
 ## Features
@@ -44,11 +46,12 @@ You can test our online live demo here : https://shi-ro.herokuapp.com/
 
 **Informations**
 
-- /help - Affiche la liste des commandes et leur fonctionnement
-- /users - Affiche la liste des utilisateurs connectés tout salons confondus
-- /list - Affiche la liste des salons existans.
+- /help - Affiche la liste des commandes et leur fonctionnement.
+- /users [opt: channelName]  - Affiche la liste des utilisateurs connectés tout salons confondus. Vous pouvez ciblé un salon en ajoutant son nom.
+- /list [opt: filtre] - Affiche la liste des salons existants. Vous pouvez filtrer les salons en ajoutant des caractères ou mots. list affichera alors le salons contenant ces caractères
 
 
 **Utilisateurs**
 
-- /nick nouveauPseudo - Changer son pseudonyme sur le chat
+- /nick nouveauPseudo - Changer son pseudonyme sur le chat.
+- /msg Pseudo#0000 Et ensuite le message - Permet d'envoyer un message privé à un autre utilisateur.
